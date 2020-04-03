@@ -1,7 +1,7 @@
 <template>
   <div class="building-board">
     <draggable
-      :list="containers"
+      :list="buildings"
       @change="log"
       group="containerGp"
       class="drag-con"
@@ -9,7 +9,7 @@
     >
       <div
         class="building-item"
-        v-for="container in containers"
+        v-for="container in buildings"
         :key="container.id"
       >
         <div class="header">
@@ -62,20 +62,30 @@ export default {
   name: 'building-board',
   components: {
     draggable,
-
     TButton,
     TCell
   },
-  // props: ['containers'],
+  computed: {
+    buildings: {
+      get() {
+        console.log('buidings', this.$store.state.buildings);
+        return this.$store.state.buildings
+      },
+      set(value) {
+        console.log('add value', value);
+        this.$store.commit('addBuilding', value)
+      }
+    }
+  },
   data() {
     return {
-      containers: []
+      // buildings: []
     };
   },
   methods: {
     log: function(evt) {
       window.console.log(evt);
-      console.log('zhangying->containers', this.containers);
+      console.log('zhangying->buildings', this.buildings);
     }
   }
 };

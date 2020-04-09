@@ -1,6 +1,6 @@
 <template>
   <div class="right-side" v-if="showFlag">
-    <Icon class="close" type="ios-close" @click="close"/>
+    <Icon class="close" type="ios-close" v-on:click="close"/>
     <div class="header">ATTRUIBUTE</div>
   </div>
 </template>
@@ -9,15 +9,21 @@
 export default {
   name: 'RigthSide',
   props: {
-    showFlag: Boolean,
+    // showFlag: Boolean,
   },
   data() {
     return {
     }
   },
+  computed: {
+    showFlag () {
+      console.log('6666', this.$store.state.showEleInfo);
+      return this.$store.state.showEleInfo;
+    }
+  },
   methods: {
     close() {
-      this.showFlag = false;
+      this.$state.commit('hideEleInfo');
     }
   }
 }
@@ -27,6 +33,7 @@ export default {
 .right-side {
   position: absolute;
   right: 0;
+  top: 0;
   width: 300px;
   height: calc(100% - 51px);
   padding: 16px;

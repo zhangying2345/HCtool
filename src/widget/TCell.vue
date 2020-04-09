@@ -30,13 +30,14 @@
                   type="text"
                 ></Button>
               </Tooltip>
-              <Tooltip content="属性" placement="top">
+              <!-- <Tooltip content="属性" placement="top"> -->
                 <Button
                   shape="circle"
                   icon="ios-cog-outline"
                   type="text"
+                  @click="showEleInfo"
                 ></Button>
-              </Tooltip>
+              <!-- </Tooltip> -->
               <Tooltip content="删除" placement="top">
                 <Button
                   shape="circle"
@@ -59,7 +60,7 @@ import draggable from 'vuedraggable';
 import TButton from '../widget/TButton';
 
 export default {
-  name: 'Tcontainer',
+  name: 'TCell',
   components: {
     draggable,
     TButton
@@ -77,6 +78,10 @@ export default {
   computed: {},
 
   methods: {
+    showEleInfo() {
+      console.log('ddddddd');
+      this.$store.commit('showEleInfo');
+    },
     log: function(evt) {
       window.console.log('Current Cell', evt);
       console.log('zhangying->Tcontainers', this.cmpList);

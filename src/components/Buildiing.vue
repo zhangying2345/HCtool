@@ -48,12 +48,15 @@
           :flexList="container.flexList"
         ></component>
       </div>
+      <RigthSide></RigthSide>
     </draggable>
+
   </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable';
+import RigthSide from './RightSide';
 
 import TButton from '../widget/TButton';
 import TCell from '../widget/TCell';
@@ -63,7 +66,8 @@ export default {
   components: {
     draggable,
     TButton,
-    TCell
+    TCell,
+    RigthSide
   },
   computed: {
     buildings: {

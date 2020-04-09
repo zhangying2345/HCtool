@@ -22,8 +22,8 @@
 
 <script>
 import draggable from 'vuedraggable';
-import Layout from './layouts';
-import CustomLayout from './CustomLayouts';
+import Layout from './layouts/layouts';
+import CustomLayout from './layouts/CustomLayouts';
 import NormalComponent from './NormalComponent';
 export default {
   name: 'Sidebar',

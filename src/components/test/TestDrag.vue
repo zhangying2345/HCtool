@@ -31,6 +31,13 @@
           :key="element.name"
         >
           {{ element.name }} {{ index }}
+          <div >Hres</div>
+            <Button
+              shape="circle"
+              icon="ios-hand-outline"
+              type="text"
+              @click="getHres"
+            ></Button>
         </div>
       </draggable>
     </div>
@@ -63,6 +70,10 @@ export default {
     };
   },
   methods: {
+
+    getHres() {
+      console.log('This is test');
+    },
     add: function() {
       this.list.push({ name: 'Juan' });
     },

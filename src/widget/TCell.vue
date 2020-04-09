@@ -30,14 +30,14 @@
                   type="text"
                 ></Button>
               </Tooltip>
-              <!-- <Tooltip content="属性" placement="top"> -->
+              <Tooltip content="属性" placement="top">
                 <Button
                   shape="circle"
                   icon="ios-cog-outline"
                   type="text"
                   @click="showEleInfo"
                 ></Button>
-              <!-- </Tooltip> -->
+              </Tooltip>
               <Tooltip content="删除" placement="top">
                 <Button
                   shape="circle"
@@ -79,9 +79,9 @@ export default {
 
   methods: {
     showEleInfo() {
-      console.log('ddddddd');
       this.$store.commit('showEleInfo');
     },
+
     log: function(evt) {
       window.console.log('Current Cell', evt);
       console.log('zhangying->Tcontainers', this.cmpList);

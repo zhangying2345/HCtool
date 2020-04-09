@@ -1,7 +1,36 @@
 <template>
   <div class="right-side" v-if="showFlag">
-    <Icon class="close" type="ios-close" v-on:click="close"/>
-    <div class="header">ATTRUIBUTE</div>
+    <a class="close-btn">
+      <Icon class="close" type="ios-close" @click="close"/>
+    </a>
+    <Divider orientation="center">元素属性</Divider>
+
+    <Form ref="formCustom" :model="formCustom" :label-width="80">
+      <FormItem label="FontSize" prop="fontSize">
+        <Input type="text" v-model="formCustom.fontSize"></Input>
+      </FormItem>
+      <FormItem label="Color" prop="color">
+        <Input type="text" v-model="formCustom.color"></Input>
+      </FormItem>
+      <FormItem label="Background" prop="background">
+        <Input type="text" v-model="formCustom.background"></Input>
+      </FormItem>
+      <FormItem label="Width" prop="width">
+        <Input type="text" v-model="formCustom.width"></Input>
+      </FormItem>
+      <FormItem label="Height" prop="height">
+        <Input type="text" v-model="formCustom.height"></Input>
+      </FormItem>
+      <FormItem label="Margin" prop="margin">
+        <Input type="text" v-model="formCustom.margin"></Input>
+      </FormItem>
+      <FormItem label="Padding" prop="padding">
+        <Input type="text" v-model="formCustom.padding"></Input>
+      </FormItem>
+      <FormItem label="Border" prop="border">
+        <Input type="text" v-model="formCustom.border"></Input>
+      </FormItem>
+    </Form>
   </div>
 </template>
 
@@ -13,17 +42,26 @@ export default {
   },
   data() {
     return {
+      formCustom: {
+        fontSize: '',
+        color: '',
+        background: '',
+        width: '',
+        height: '',
+        margin: '',
+        padding: '',
+        border: '',
+      },
     }
   },
   computed: {
     showFlag () {
-      console.log('6666', this.$store.state.showEleInfo);
       return this.$store.state.showEleInfo;
     }
   },
   methods: {
     close() {
-      this.$state.commit('hideEleInfo');
+      this.$store.commit('hideEleInfo');
     }
   }
 }
@@ -32,17 +70,20 @@ export default {
 <style lang="less" scoped>
 .right-side {
   position: absolute;
+  z-index: 902;
   right: 0;
   top: 0;
   width: 300px;
-  height: calc(100% - 51px);
+  height: 100%;
   padding: 16px;
   font-size: 14px;
   line-height: 1.5;
   word-wrap: break-word;
   position: absolute;
   overflow: auto;
-  border: solid 1px red;
+  border: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
 }
 
 .header {
@@ -57,7 +98,22 @@ export default {
   font-size: 16px;
   margin: 16px 0;
 }
+
+.close-btn {
+  z-index: 1;
+  font-size: 12px;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
 .close {
-  float: right;
+  font-size: 31px;
+  color: #999;
+  transition: color .2s ease;
+  position: relative;
+  top: 1px;
 }
 </style>

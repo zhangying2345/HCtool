@@ -30,6 +30,7 @@
                 shape="circle"
                 icon="ios-cog-outline"
                 type="text"
+                @click="showEleInfo"
               ></Button>
             </Tooltip>
             <Tooltip content="删除" placement="top">
@@ -87,6 +88,10 @@ export default {
     };
   },
   methods: {
+    showEleInfo() {
+      this.$store.commit('showEleInfo');
+    },
+
     log: function(evt) {
       window.console.log(evt);
       console.log('zhangying->buildings', this.buildings);

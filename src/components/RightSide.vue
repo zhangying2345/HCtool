@@ -6,6 +6,44 @@
     <Divider orientation="center">元素属性</Divider>
 
     <Form ref="formCustom" :model="formCustom" :label-width="80">
+      <FormItem label="fxLayout" prop="fxLayout">
+        <Select v-model="formCustom.fxLayout" placeholder="Select fxLayout">
+          <Option value="row">row</Option>
+          <Option value="column">column</Option>
+          <Option value="row-reverse">row-reverse</Option>
+          <Option value="column-reverse">column-reverse</Option>
+        </Select>
+      </FormItem>
+      <FormItem label="FxLayoutAlign">
+        <Row>
+          <Col span="11">
+            <FormItem prop="mainAxis">
+              <Select v-model="formCustom.mainAxis" placeholder="Select mainAxis">
+                <Option value="start">start</Option>
+                <Option value="center">center</Option>
+                <Option value="end">end</Option>
+                <Option value="space-around">space-around</Option>
+                <Option value="space-between">space-between</Option>
+                <Option value="space-evenly">space-evenly</Option>
+              </Select>
+            </FormItem>
+          </Col>
+          <Col span="2" style="text-align: center">-</Col>
+          <Col span="11">
+            <FormItem prop="crossAxis">
+              <Select v-model="formCustom.crossAxis" placeholder="Select crossAxis">
+                <Option value="start">start</Option>
+                <Option value="center">center</Option>
+                <Option value="end">end</Option>
+                <Option value="stretch">stretch</Option>
+                <Option value="space-between">space-between</Option>
+                <Option value="space-around">space-around</Option>
+                <Option value="baseline">baseline</Option>
+            </Select>
+            </FormItem>
+          </Col>
+        </Row>
+      </FormItem>
       <FormItem label="FontSize" prop="fontSize">
         <Input type="text" v-model="formCustom.fontSize"></Input>
       </FormItem>
@@ -43,6 +81,10 @@ export default {
   data() {
     return {
       formCustom: {
+        fxLayout: '',
+        mainAxis: '',
+        crossAxis: '',
+
         fontSize: '',
         color: '',
         background: '',

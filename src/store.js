@@ -12,7 +12,7 @@ const store = new Vuex.Store({
   },
   mutations: {
     showEleInfo(state) {
-      console.log('zzzzzzzz');
+      console.log(JSON.stringify(state.buildings));
       state.showEleInfo = true;
     },
     hideEleInfo(state) {
@@ -23,5 +23,83 @@ const store = new Vuex.Store({
     }
   }
 })
+
+/**
+ * [
+    {
+      "id":"IVfWYDtWD",
+      "name":"Cell",
+      "attribute":"LAYOUT",
+      "componentName":"TCell",
+      "flexList":[
+        {
+          "widthRatio":1,
+          "childrenList":[
+
+          ]
+        }
+      ]
+    },
+    {
+      "id":"5SFzLgg85",
+      "name":"Cell",
+      "attribute":"LAYOUT",
+      "componentName":"TCell",
+      "flexList":[
+        {
+          "widthRatio":1,
+          "childrenList":[
+            {
+              "id":"hbvE2zdSq",
+              "name":"Cell",
+              "attribute":"LAYOUT",
+              "componentName":"TCell",
+              "flexList":[
+                  {
+                      "widthRatio":1,
+                      "childrenList":[
+
+                      ]
+                  }
+              ]
+            }
+          ]
+        },
+        {
+          "widthRatio":1,
+          "childrenList":[
+
+          ]
+        }
+      ]
+    },
+    {
+      "id":"Q3YNgugc-",
+      "name":"Cell",
+      "attribute":"LAYOUT",
+      "componentName":"TCell",
+      "flexList":[
+        {
+            "widthRatio":1,
+            "childrenList":[
+
+            ]
+        },
+        {
+            "widthRatio":1,
+            "childrenList":[
+
+            ]
+        },
+        {
+            "widthRatio":1,
+            "childrenList":[
+
+            ]
+        }
+      ]
+    }
+]
+ */
 
 export default store;

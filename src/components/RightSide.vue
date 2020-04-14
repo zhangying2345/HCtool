@@ -115,7 +115,7 @@ export default {
   z-index: 902;
   right: 0;
   top: 0;
-  width: 300px;
+  width: 400px;
   height: 100%;
   padding: 16px;
   font-size: 14px;

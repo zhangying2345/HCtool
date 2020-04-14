@@ -11,29 +11,29 @@
         <a class="nav-item">预览</a>
         <a class="nav-item">下载</a>
         <a class="nav-item">清空</a> -->
-        <Menu mode="horizontal" :theme="theme1" active-name="1">
+        <Menu mode="horizontal" active-name="1">
         <MenuItem name="1">
           <Icon type="ios-paper" />
           编辑
         </MenuItem>
         <MenuItem name="2">
-          <Icon type="ios-people" />
+          <Icon type="ios-construct" />
           开发
         </MenuItem>
         <MenuItem name="3">
-          <Icon type="ios-people" />
+          <Icon type="ios-eye" />
           预览
         </MenuItem>
         <Submenu name="4">
           <template slot="title">
-            <Icon type="ios-stats" />
+            <Icon type="md-cloud-download" />
             下载
           </template>
           <MenuItem name="4-1">H5</MenuItem>
           <MenuItem name="4-2">小程序</MenuItem>
         </Submenu>
         <MenuItem name="5">
-          <Icon type="ios-construct" />
+          <Icon type="md-trash" />
           清空
         </MenuItem>
     </Menu>

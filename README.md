@@ -1,4 +1,4 @@
-# hc-tool
+# typescipt-vue-class
 
 ## Project setup
 ```

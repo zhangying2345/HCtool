@@ -15,9 +15,6 @@
         <div class="header">
           <div>{{ container.name }}</div>
           <div>
-            <!-- <span class="handle"> 拖动</span>
-            <span class=""> 拖动</span>
-            <span class=""> 拖动</span> -->
             <Tooltip class="handle" content="拖动" placement="top">
               <Button
                 shape="circle"
@@ -46,58 +43,51 @@
         <component
           style="height: 100%"
           :is="container.componentName"
-          :flexList="container.flexList"
+          :flexListProp="container.flexList"
         ></component>
       </div>
       <RigthSide></RigthSide>
     </draggable>
-
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import draggable from 'vuedraggable';
+
 import RigthSide from './RightSide';
+import TButton from '../buildComponents/TButton';
+import TCell from '../buildComponents/TCell';
 
-import TButton from '../widget/TButton';
-import TCell from '../widget/TCell';
-
-export default {
-  name: 'building-board',
+@Component({
   components: {
     draggable,
     TButton,
     TCell,
-    RigthSide
+    RigthSide,
   },
-  computed: {
-    buildings: {
-      get() {
-        console.log('buidings', this.$store.state.buildings);
-        return this.$store.state.buildings
-      },
-      set(value) {
-        console.log('add value', value);
-        this.$store.commit('addBuilding', value)
-      }
-    }
-  },
-  data() {
-    return {
-      // buildings: []
-    };
-  },
-  methods: {
-    showEleInfo() {
-      this.$store.commit('showEleInfo');
-    },
-
-    log: function(evt) {
-      window.console.log(evt);
-      console.log('zhangying->buildings', this.buildings);
-    }
+})
+export default class Building extends Vue {
+  get buildings() {
+    console.log('buidings', this.$store.state.buildings);
+    return this.$store.state.buildings;
   }
-};
+
+  set buildings(value) {
+    console.log('add value', value);
+    this.$store.commit('addBuilding', value);
+  }
+
+  showEleInfo() {
+    this.$store.commit('showEleInfo');
+  }
+
+  log(evt) {
+    window.console.log(evt);
+    console.log('zhangying->buildings', this.buildings);
+  }
+}
 </script>
 
 <style scoped lang="less">

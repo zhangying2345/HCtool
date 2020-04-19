@@ -1,7 +1,8 @@
+/* eslint-disable vue/no-parsing-error */
 <template>
   <div class="right-side" v-if="showFlag">
     <a class="close-btn">
-      <Icon class="close" type="ios-close" @click="close"/>
+      <Icon class="close" type="ios-close" @click="close" />
     </a>
     <Divider orientation="center">元素属性</Divider>
 
@@ -18,7 +19,10 @@
         <Row>
           <Col span="11">
             <FormItem prop="mainAxis">
-              <Select v-model="formCustom.mainAxis" placeholder="Select mainAxis">
+              <Select
+                v-model="formCustom.mainAxis"
+                placeholder="Select mainAxis"
+              >
                 <Option value="start">start</Option>
                 <Option value="center">center</Option>
                 <Option value="end">end</Option>
@@ -31,7 +35,10 @@
           <Col span="2" style="text-align: center">-</Col>
           <Col span="11">
             <FormItem prop="crossAxis">
-              <Select v-model="formCustom.crossAxis" placeholder="Select crossAxis">
+              <Select
+                v-model="formCustom.crossAxis"
+                placeholder="Select crossAxis"
+              >
                 <Option value="start">start</Option>
                 <Option value="center">center</Option>
                 <Option value="end">end</Option>
@@ -39,7 +46,7 @@
                 <Option value="space-between">space-between</Option>
                 <Option value="space-around">space-around</Option>
                 <Option value="baseline">baseline</Option>
-            </Select>
+              </Select>
             </FormItem>
           </Col>
         </Row>
@@ -73,11 +80,11 @@
 </template>
 
 <script>
-export default {
-  name: 'RigthSide',
-  props: {
-    // showFlag: Boolean,
-  },
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class RigthSide extends Vue {
   data() {
     return {
       formCustom: {
@@ -94,17 +101,15 @@ export default {
         padding: '',
         border: '',
       },
-    }
-  },
-  computed: {
-    showFlag () {
-      return this.$store.state.showEleInfo;
-    }
-  },
-  methods: {
-    close() {
-      this.$store.commit('hideEleInfo');
-    }
+    };
+  }
+
+  get showFlag() {
+    return this.$store.state.showEleInfo;
+  }
+
+  close() {
+    this.$store.commit('hideEleInfo');
   }
 }
 </script>
@@ -125,7 +130,7 @@ export default {
   overflow: auto;
   border: 0;
   background-color: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .header {
@@ -154,7 +159,7 @@ export default {
 .close {
   font-size: 31px;
   color: #999;
-  transition: color .2s ease;
+  transition: color 0.2s ease;
   position: relative;
   top: 1px;
 }

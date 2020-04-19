@@ -31,15 +31,19 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import draggable from 'vuedraggable';
+
 import * as Shortid from 'shortid';
 import * as _ from 'lodash';
 
-export default {
-  name: 'layout',
+@Component({
   components: {
-    draggable
+    draggable,
   },
+})
+export default class PresetLayout extends Vue {
   data() {
     return {
       layouts: [
@@ -51,9 +55,9 @@ export default {
           flexList: [
             {
               widthRatio: 1,
-              childrenList: []
-            }
-          ]
+              childrenList: [],
+            },
+          ],
         },
         {
           id: 'TCell-Id-101',
@@ -63,13 +67,13 @@ export default {
           flexList: [
             {
               widthRatio: 1,
-              childrenList: []
+              childrenList: [],
             },
             {
               widthRatio: 1,
-              childrenList: []
-            }
-          ]
+              childrenList: [],
+            },
+          ],
         },
         {
           id: 'TCell-Id-102',
@@ -79,38 +83,37 @@ export default {
           flexList: [
             {
               widthRatio: 1,
-              childrenList: []
+              childrenList: [],
             },
             {
               widthRatio: 1,
-              childrenList: []
+              childrenList: [],
             },
             {
               widthRatio: 1,
-              childrenList: []
-            }
-          ]
-        }
-      ]
+              childrenList: [],
+            },
+          ],
+        },
+      ],
     };
-  },
-  methods: {
-    cloneFun: function(el) {
-      let tempId = Shortid.generate();
-      let cloneEl = _.cloneDeep({
-        id: tempId,
-        name: el.name,
-        attribute: el.attribute,
-        componentName: el.componentName,
-        flexList: el.flexList
-      });
-      return cloneEl;
-    },
-    log: function(evt) {
-      window.console.log(evt);
-    }
   }
-};
+
+  cloneFun(el) {
+    const tempId = Shortid.generate();
+    const cloneEl = _.cloneDeep({
+      id: tempId,
+      name: el.name,
+      attribute: el.attribute,
+      componentName: el.componentName,
+      flexList: el.flexList,
+    });
+    return cloneEl;
+  }
+  log(evt) {
+    window.console.log(evt);
+  }
+}
 </script>
 
 <style lang="less" scoped>

@@ -11,31 +11,27 @@
   </div>
 </template>
 
+<script>
 // https://juejin.im/post/5e8e8d5a6fb9a03c6d3d9f42#heading-11
 // https://uniapp.dcloud.net.cn/README
-<script>
-import Header from './Header';
-import Test from './test/TestDrag';
-// import Inner from './test/Inner';
-import Sidebar from './Sidebar';
-import Building from './Buildiing';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
-export default {
-  name: 'Main',
-  props: {
-    msg: String
-  },
+import Header from '../layouts/Header';
+import Test from '../test/TestDrag';
+import Sidebar from '../layouts/Sidebar';
+import Building from '../layouts/Buildiing';
+
+@Component({
   components: {
-    // Demo,
-    Test,
-    // Inner,
     Header,
+    Test,
     Sidebar,
-    Building
-    // TwoList
-  }
-};
-/** 点击预览
+    Building,
+  },
+})
+export default class Home extends Vue {
+  /** 点击预览
  * r.onclick = function() {
 			var n = t.value;
 			if (n != "") {
@@ -46,6 +42,7 @@ export default {
 			} else alert("请将需要运行的HTML填写到输入框后再运行！", "alert", "运行提示")
 		}
  */
+}
 </script>
 
 <style scoped lang="less">

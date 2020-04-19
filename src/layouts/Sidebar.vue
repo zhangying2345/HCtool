@@ -2,7 +2,7 @@
   <div class="sidebar">
     <div class="title">布局设置</div>
     <span class="sub-title">预置布局</span>
-    <Layout></Layout>
+    <PrsetLayout></PrsetLayout>
     <span class="sub-title">自定义布局</span>
     <CustomLayout></CustomLayout>
     <draggable
@@ -21,19 +21,23 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import draggable from 'vuedraggable';
-import Layout from './layouts/layouts';
-import CustomLayout from './layouts/CustomLayouts';
-import NormalComponent from './NormalComponent';
-export default {
-  name: 'Sidebar',
+
+import PrsetLayout from '../sidebarComponents/PrsetLayout';
+import CustomLayout from '../sidebarComponents/CustomLayout';
+import NormalComponent from '../buildComponents/NormalComponent';
+
+@Component({
   components: {
     draggable,
     NormalComponent,
-    Layout,
-    CustomLayout
+    PrsetLayout,
+    CustomLayout,
   },
-  props: [],
+})
+export default class Sidebar extends Vue {
   data() {
     return {
       layouts: [
@@ -45,34 +49,33 @@ export default {
           flexList: [
             {
               widthRatio: 1,
-              childrenList: []
+              childrenList: [],
             },
             {
               widthRatio: 1,
-              childrenList: []
-            }
-          ]
-        }
-      ]
+              childrenList: [],
+            },
+          ],
+        },
+      ],
     };
-  },
-  methods: {
-    add: function() {
-      this.list.push({ name: 'Juan' });
-    },
-    replace: function() {
-      this.list = [{ name: 'Edgard' }];
-    },
-    clone: function(el) {
-      return {
-        name: el.name + ' cloned'
-      };
-    },
-    log: function(evt) {
-      window.console.log(evt);
-    }
   }
-};
+
+  add() {
+    this.list.push({ name: 'Juan' });
+  }
+  replace() {
+    this.list = [{ name: 'Edgard' }];
+  }
+  clone(el) {
+    return {
+      name: el.name + ' cloned',
+    };
+  }
+  log(evt) {
+    window.console.log(evt);
+  }
+}
 </script>
 
 <style lang="less" scoped>

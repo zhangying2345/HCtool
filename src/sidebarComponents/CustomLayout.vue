@@ -22,44 +22,46 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import draggable from 'vuedraggable';
 
-export default {
-  name: 'CustomLayout',
+@Component({
   components: {
-    draggable
+    draggable,
   },
+})
+export default class CustomLayout extends Vue {
   data() {
     return {
       value: '',
-      layouts: []
+      layouts: [],
     };
-  },
-  methods: {
-    blur() {
-      console.log('qqq', this.value);
-      const flexes = this.value.split('-');
-      const layout = {
-        id: 'Tcell-Id-199',
-        name: 'Cell',
-        attribute: 'LAYOUT',
-        componentName: 'TCell',
-        flexList: []
-      };
-      for (const item of flexes) {
-        const flexListItem = {
-          widthRatio: +item,
-          childrenList: []
-        };
-        layout.flexList.push(flexListItem);
-      }
-      this.layouts.push(layout);
-    },
-    log: function(evt) {
-      window.console.log(evt);
-    }
   }
-};
+
+  blur() {
+    console.log('qqq', this.value);
+    const flexes = this.value.split('-');
+    const layout = {
+      id: 'Tcell-Id-199',
+      name: 'Cell',
+      attribute: 'LAYOUT',
+      componentName: 'TCell',
+      flexList: [],
+    };
+    for (const item of flexes) {
+      const flexListItem = {
+        widthRatio: +item,
+        childrenList: [],
+      };
+      layout.flexList.push(flexListItem);
+    }
+    this.layouts.push(layout);
+  }
+  log(evt) {
+    window.console.log(evt);
+  }
+}
 </script>
 
 <style lang="less" scoped>

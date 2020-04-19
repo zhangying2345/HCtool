@@ -22,7 +22,6 @@
           <div class="header">
             <span>{{ subFlex.name }}</span>
             <div class="">
-              <!-- <div class="handle">拖动</div> -->
               <Tooltip class="handle" content="拖动" placement="top">
                 <Button
                   shape="circle"
@@ -43,6 +42,7 @@
                   shape="circle"
                   icon="ios-trash-outline"
                   type="text"
+                  @click="deleteEle(subFlex.id)"
                 ></Button>
               </Tooltip>
             </div>
@@ -55,53 +55,66 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import draggable from 'vuedraggable';
 
-import TButton from '../widget/TButton';
+import TButton from './TButton';
 
-export default {
-  name: 'TCell',
+const TCellProps = Vue.extend({
+  props: {
+    flexListProp: {
+      type: Array,
+    },
+  },
+});
+
+@Component({
   components: {
     draggable,
-    TButton
+    TButton,
   },
-  props: {
-    flexList: {
-      type: Array
-    }
-  },
+})
+export default class TCell extends TCellProps {
+  get flexList() {
+    return this.flexListProp;
+  }
   data() {
     return {
-      cmpList: []
+      cmpList: [],
     };
-  },
-  computed: {},
-
-  methods: {
-    showEleInfo() {
-      this.$store.commit('showEleInfo');
-    },
-
-    log: function(evt) {
-      window.console.log('Current Cell', evt);
-      console.log('zhangying->Tcontainers', this.cmpList);
-    },
-
-    getFlexWid(widthRatio, flexList) {
-      let sum = 0;
-      for (const item of flexList) {
-        sum += item.widthRatio;
-      }
-      const widPercent = (widthRatio / sum) * 100 + '%';
-      return `calc(${widPercent} - 5px)`;
-      // return (widthRatio / sum) * 100 + '%';
-    },
-
-    chooseCurrent(evt) {
-      console.log('zhangying->111111', evt);
-    }
   }
-};
+  showEleInfo() {
+    this.$store.commit('showEleInfo');
+  }
+
+  log(evt) {
+    window.console.log('Current Cell', evt);
+    console.log('zhangying->Tcontainers', this.cmpList);
+  }
+
+  getFlexWid(widthRatio, flexList) {
+    let sum = 0;
+    for (const item of flexList) {
+      sum += item.widthRatio;
+    }
+    const widPercent = (widthRatio / sum) * 100 + '%';
+    return `calc(${widPercent} - 5px)`;
+    // return (widthRatio / sum) * 100 + '%';
+  }
+
+  chooseCurrent(evt) {
+    console.log('zhangying->111111', evt);
+  }
+
+  deleteEle(elementId) {
+    const buildings = this.$store.state.buildings;
+    this.$store.commit('deleteEle', {
+      elementId,
+      parentFlex: buildings,
+    });
+  }
+}
 </script>
 
 <style lang="less" scoped>

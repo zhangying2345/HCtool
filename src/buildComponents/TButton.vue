@@ -5,12 +5,23 @@
 </template>
 
 <script>
-export default {
-  name: 'TButton',
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+const TButtonProps = Vue.extend({
   props: {
-    id: Number
+    idProp: Number,
+  },
+});
+
+@Component({
+  components: {},
+})
+export default class TButton extends TButtonProps {
+  get id() {
+    return this.idProp;
   }
-};
+}
 </script>
 
 <style>

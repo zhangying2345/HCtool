@@ -6,46 +6,43 @@
         <h4>HC-tool</h4>
       </a>
       <div class="header-nav-list">
-        <!-- <a class="nav-item">编辑</a>
-        <a class="nav-item">开发</a>
-        <a class="nav-item">预览</a>
-        <a class="nav-item">下载</a>
-        <a class="nav-item">清空</a> -->
         <Menu mode="horizontal" active-name="1">
-        <MenuItem name="1">
-          <Icon type="ios-paper" />
-          编辑
-        </MenuItem>
-        <MenuItem name="2">
-          <Icon type="ios-construct" />
-          开发
-        </MenuItem>
-        <MenuItem name="3">
-          <Icon type="ios-eye" />
-          预览
-        </MenuItem>
-        <Submenu name="4">
-          <template slot="title">
-            <Icon type="md-cloud-download" />
-            下载
-          </template>
-          <MenuItem name="4-1">H5</MenuItem>
-          <MenuItem name="4-2">小程序</MenuItem>
-        </Submenu>
-        <MenuItem name="5">
-          <Icon type="md-trash" />
-          清空
-        </MenuItem>
-    </Menu>
+          <MenuItem name="1">
+            <Icon type="ios-paper" />
+            编辑
+          </MenuItem>
+          <MenuItem name="2">
+            <Icon type="ios-construct" />
+            开发
+          </MenuItem>
+          <MenuItem name="3">
+            <Icon type="ios-eye" />
+            预览
+          </MenuItem>
+          <Submenu name="4">
+            <template slot="title">
+              <Icon type="md-cloud-download" />
+              下载
+            </template>
+            <MenuItem name="4-1">H5</MenuItem>
+            <MenuItem name="4-2">小程序</MenuItem>
+          </Submenu>
+          <MenuItem name="5">
+            <Icon type="md-trash" />
+            清空
+          </MenuItem>
+        </Menu>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'main-header'
-};
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component
+export default class Header extends Vue {}
 </script>
 
 <style lang="less" scoped>

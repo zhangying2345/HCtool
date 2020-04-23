@@ -24,7 +24,7 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 #### works
-1. 删除功能
+1. 删除功能(vuex递归)
 2. 只有一个cell的容器才能设置flex属性
 3. 集成class 方案
 4. ejs生成html， 生成style文件

@@ -35,6 +35,7 @@
                 shape="circle"
                 icon="ios-trash-outline"
                 type="text"
+                @click="deleteEle(container.id)"
               ></Button>
             </Tooltip>
           </div>
@@ -77,6 +78,15 @@ export default class Building extends Vue {
   set buildings(value) {
     console.log('add value', value);
     this.$store.commit('addBuilding', value);
+  }
+
+  deleteEle(elementId) {
+    const buildings = this.$store.state.buildings;
+    const deleteEle = {
+      elementId,
+      parentFlex: buildings,
+    };
+    this.$store.commit('deleteEle', deleteEle);
   }
 
   showEleInfo() {

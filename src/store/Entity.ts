@@ -1,9 +1,10 @@
-export interface FlexIfs {
+interface FlexIfs {
   widthRatio: number;
   childrenList: BuildingIfs[];
 }
 
-export interface BuildingIfs {
+
+interface BuildingIfs {
   id: string;
   name: string;
   attribute: string;
@@ -11,7 +12,7 @@ export interface BuildingIfs {
   flexList: FlexIfs[];
 }
 
-export interface StateIfs {
+interface StateIfs {
   // 右侧显示element info
   showEleInfo: boolean;
   // 存放拖放的所有元素
@@ -23,4 +24,10 @@ export interface StoreIfs {
   mutations: any;
   actions: any;
   modules: any;
+}
+
+// for 删除某个节点
+export interface DeleteEleIfs {
+  elementId: string;
+  parentFlex: BuildingIfs[];
 }

@@ -109,10 +109,11 @@ export default class TCell extends TCellProps {
 
   deleteEle(elementId) {
     const buildings = this.$store.state.buildings;
-    this.$store.commit('deleteEle', {
+    const deleteEle = {
       elementId,
       parentFlex: buildings,
-    });
+    };
+    this.$store.commit('deleteEle', deleteEle);
   }
 }
 </script>

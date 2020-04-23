@@ -1,116 +1,96 @@
 <template>
-  <div>
-    
-  </div>
+  <div></div>
 </template>
 
 <script>
 const buildings = [
-    {
-      "id":"K7iYUJbmd",
-      "name":"Cell",
-      "attribute":"LAYOUT",
-      "componentName":"TCell",
-      "flexList":[
+  {
+    id: 'K7iYUJbmd',
+    name: 'Cell',
+    attribute: 'LAYOUT',
+    componentName: 'TCell',
+    flexList: [
+      {
+        widthRatio: 1,
+        childrenList: [
           {
-            "widthRatio":1,
-            "childrenList":[
-                {
-                  "id":"H7rRiIhmX",
-                  "name":"Cell",
-                  "attribute":"LAYOUT",
-                  "componentName":"TCell",
-                  "flexList":[
-                      {
-                        "widthRatio":1,
-                        "childrenList":[
-
-                        ]
-                      }
-                  ]
-                }
-            ]
-          }
-      ]
+            id: 'H7rRiIhmX',
+            name: 'Cell',
+            attribute: 'LAYOUT',
+            componentName: 'TCell',
+            flexList: [
+              {
+                widthRatio: 1,
+                childrenList: [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'uUiVTI9qE',
+    name: 'Cell',
+    attribute: 'LAYOUT',
+    styleObj: {
+      name: 'etst',
+      styles: {},
     },
-    {
-      "id":"uUiVTI9qE",
-      "name":"Cell",
-      "attribute":"LAYOUT",
-      "componentName":"TCell",
-      "flexList":[
-        {
-          "widthRatio":1,
-          "childrenList":[
-
-          ]
-        },
-        {
-          "widthRatio":1,
-          "childrenList":[
-
-          ]
-        }
-      ]
-    },
-    {
-      "id":"DW7mv9_7b",
-      "name":"Cell",
-      "attribute":"LAYOUT",
-      "componentName":"TCell",
-      "flexList":[
-        {
-          "widthRatio":1,
-          "childrenList":[
-
-          ]
-        },
-        {
-          "widthRatio":1,
-          "childrenList":[
-
-          ]
-        },
-        {
-          "widthRatio":1,
-          "childrenList":[
-
-          ]
-        }
-      ]
-    },
-    {
-      "id":"wCSlWxQ6P",
-      "name":"Cell",
-      "attribute":"LAYOUT",
-      "componentName":"TCell",
-      "flexList":[
-        {
-          "widthRatio":1,
-          "childrenList":[
-
-          ]
-        },
-        {
-          "widthRatio":1,
-          "childrenList":[
-
-          ]
-        },
-        {
-          "widthRatio":1,
-          "childrenList":[
-
-          ]
-        }
-      ]
-    }
+    componentName: 'TCell',
+    flexList: [
+      {
+        widthRatio: 1,
+        childrenList: [],
+      },
+      {
+        widthRatio: 1,
+        childrenList: [],
+      },
+    ],
+  },
+  {
+    id: 'DW7mv9_7b',
+    name: 'Cell',
+    attribute: 'LAYOUT',
+    componentName: 'TCell',
+    flexList: [
+      {
+        widthRatio: 1,
+        childrenList: [],
+      },
+      {
+        widthRatio: 1,
+        childrenList: [],
+      },
+      {
+        widthRatio: 1,
+        childrenList: [],
+      },
+    ],
+  },
+  {
+    id: 'wCSlWxQ6P',
+    name: 'Cell',
+    attribute: 'LAYOUT',
+    componentName: 'TCell',
+    flexList: [
+      {
+        widthRatio: 1,
+        childrenList: [],
+      },
+      {
+        widthRatio: 1,
+        childrenList: [],
+      },
+      {
+        widthRatio: 1,
+        childrenList: [],
+      },
+    ],
+  },
 ];
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>

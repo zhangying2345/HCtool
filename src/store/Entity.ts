@@ -1,15 +1,21 @@
-interface FlexIfs {
+export interface FlexIfs {
   widthRatio: number;
   childrenList: BuildingIfs[];
 }
 
+interface StyleInfoIfs {
+  name: string;
+  style: any;
+}
 
-interface BuildingIfs {
+
+export interface BuildingIfs {
   id: string;
   name: string;
   attribute: string;
   componentName: string;
   flexList: FlexIfs[];
+  styleInfo: StyleInfoIfs;
 }
 
 interface StateIfs {
@@ -17,6 +23,8 @@ interface StateIfs {
   showEleInfo: boolean;
   // 存放拖放的所有元素
   buildings: BuildingIfs[];
+  // 当前选择的element info
+  selectedEleInfo: BuildingIfs | FlexIfs | null;
 }
 
 export interface StoreIfs {

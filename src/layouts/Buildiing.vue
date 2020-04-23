@@ -27,7 +27,7 @@
                 shape="circle"
                 icon="ios-cog-outline"
                 type="text"
-                @click="showEleInfo"
+                @click="showEleInfo(container)"
               ></Button>
             </Tooltip>
             <Tooltip content="删除" placement="top">
@@ -89,8 +89,8 @@ export default class Building extends Vue {
     this.$store.commit('deleteEle', deleteEle);
   }
 
-  showEleInfo() {
-    this.$store.commit('showEleInfo');
+  showEleInfo(elementInfo) {
+    this.$store.commit('showEleInfo', elementInfo);
   }
 
   log(evt) {

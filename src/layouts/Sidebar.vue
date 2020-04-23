@@ -5,16 +5,6 @@
     <PrsetLayout></PrsetLayout>
     <span class="sub-title">自定义布局</span>
     <CustomLayout></CustomLayout>
-    <draggable
-      :list="layouts"
-      @change="log"
-      :group="{ name: 'containerGp', pull: 'clone', put: false }"
-      class="list-group-item"
-    >
-      <div class="container-item" v-for="layout in layouts" :key="layout.id">
-        {{ layout.name }}
-      </div>
-    </draggable>
     <h3>普通组件</h3>
     <NormalComponent></NormalComponent>
   </div>
@@ -40,24 +30,6 @@ import NormalComponent from '../buildComponents/NormalComponent';
 export default class Sidebar extends Vue {
   data() {
     return {
-      layouts: [
-        {
-          id: 'TCell-Id-100',
-          name: 'Container',
-          attribute: 'COMPONENT',
-          componentName: 'TCell',
-          flexList: [
-            {
-              widthRatio: 1,
-              childrenList: [],
-            },
-            {
-              widthRatio: 1,
-              childrenList: [],
-            },
-          ],
-        },
-      ],
     };
   }
 

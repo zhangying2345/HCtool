@@ -47,6 +47,10 @@ export default class CustomLayout extends Vue {
       name: 'Cell',
       attribute: 'LAYOUT',
       componentName: 'TCell',
+      styleInfo: {
+        name: 'test',
+        style: {}
+      },
       flexList: [],
     };
     for (const item of flexes) {

@@ -108,6 +108,10 @@ export default class RigthSide extends Vue {
     return this.$store.state.showEleInfo;
   }
 
+  get selectedEleInfo() {
+    return this.$store.state.selectedEleInfo;
+  }
+
   close() {
     this.$store.commit('hideEleInfo');
   }

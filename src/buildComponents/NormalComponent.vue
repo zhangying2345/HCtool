@@ -29,7 +29,11 @@ export default {
           id: Shortid.generate(),
           name: 'Button',
           attribute: 'COMPONENT',
-          componentName: 'TButton'
+          componentName: 'TButton',
+          styleInfo: {
+            name: 'test',
+            style: {}
+          }
         }
       ]
     };

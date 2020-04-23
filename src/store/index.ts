@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { StoreIfs, DeleteEleIfs } from './Entity';
+import { StoreIfs, DeleteEleIfs, BuildingIfs, FlexIfs } from './Entity';
 
 Vue.use(Vuex);
 
@@ -9,14 +9,18 @@ const StoreObj: StoreIfs = {
     showEleInfo: false,
 
     buildings: [],
+
+    selectedEleInfo: null,
   },
 
   mutations: {
 
     // 显示元素信息
-    showEleInfo(state: any) {
+    showEleInfo(state: any, elementInfo: BuildingIfs | FlexIfs) {
       console.log(JSON.stringify(state.buildings));
       state.showEleInfo = true;
+      state.selectedEleInfo = elementInfo;
+      console.log('zhangying->selectInfo', state.selectedEleInfo);
     },
 
     // 隐藏元素信息
@@ -50,6 +54,7 @@ const StoreObj: StoreIfs = {
         }
       }
     },
+
   },
   actions: {},
   modules: {},

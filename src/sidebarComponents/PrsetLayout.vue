@@ -52,6 +52,10 @@ export default class PresetLayout extends Vue {
           name: 'Cell',
           attribute: 'LAYOUT',
           componentName: 'TCell',
+          styleInfo: {
+            name: 'test',
+            style: {}
+          },
           flexList: [
             {
               widthRatio: 1,
@@ -64,6 +68,10 @@ export default class PresetLayout extends Vue {
           name: 'Cell',
           attribute: 'LAYOUT',
           componentName: 'TCell',
+          styleInfo: {
+            name: 'test',
+            style: {}
+          },
           flexList: [
             {
               widthRatio: 1,
@@ -80,6 +88,10 @@ export default class PresetLayout extends Vue {
           name: 'Cell',
           attribute: 'LAYOUT',
           componentName: 'TCell',
+          styleInfo: {
+            name: 'test',
+            style: {}
+          },
           flexList: [
             {
               widthRatio: 1,

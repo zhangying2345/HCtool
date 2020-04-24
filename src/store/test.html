@@ -1,9 +1,25 @@
-<template>
-  <div></div>
-</template>
+<html>
+    <script src="../../node_modules//ejs//ejs.js"></script>
+    <script>
+      const htmlTemplate = `
+      <% for(const item of buildings){ %>
+      <% if(item.componentName === 'TCell'){ %>
+        <div>
+          <% for(const subItem of item.flexList){ %>
+            <div style="">
+              <%- renderHtml({buildings: subItem.childrenList}) %>
+            </div>
+          <% } %>
+        </div>
+      <%  } %>
+    <% } %>`;
 
-<script>
-const buildings = [
+      const renderHtml = (data) => {
+        const output = ejs.render(htmlTemplate, data);
+        console.log('output', output);
+        return ejs.render(htmlTemplate, data);
+      };
+      const buildings = [
   {
     id: 'K7iYUJbmd',
     name: 'Cell',
@@ -116,7 +132,8 @@ const buildings = [
     ],
   },
 ];
-export default {};
-</script>
 
-<style></style>
+    const result = renderHtml({buildings});
+    console.log('result', result);
+    </script>
+</html>

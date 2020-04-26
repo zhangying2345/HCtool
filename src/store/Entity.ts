@@ -4,8 +4,8 @@ export interface FlexIfs {
 }
 
 interface StyleInfoIfs {
-  name: string;
-  style: any;
+  name: string; // style 唯一标识符
+  style: any; // style 集合
 }
 
 

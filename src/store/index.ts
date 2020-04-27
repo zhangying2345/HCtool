@@ -17,7 +17,7 @@ const StoreObj: StoreIfs = {
   mutations: {
 
     // 显示元素信息
-    showEleInfo(state: any, elementInfo: BuildingIfs | FlexIfs) {
+    showEleInfo(state: any, elementInfo: BuildingIfs) {
       console.log(JSON.stringify(state.buildings));
       state.showEleInfo = true;
       state.selectedEleInfo = elementInfo;

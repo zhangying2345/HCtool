@@ -87,11 +87,19 @@ import * as _ from 'lodash';
 @Component({
   watch: {
     formCustom: {
-      handler: function(newValue, oldValue) {
-        console.log('value changed', newValue);
-        this.$store.state.selectedEleInfo = _.cloneDeep(newValue);
+      handler: function(newValue) {
+        this.$store.state.selectedEleInfo
+        currentEleInfo = _.cloneDeep(newValue);
         console.log('selectedEleInfo', this.$store.state.selectedEleInfo);
         console.log('selectedEleInfo watch buildings', this.$store.state.buildings);
+        // 根据Id，递归树 替换元素
+        const currentId = currentEleInfo.id;
+        const buidlings = this.$store.state.buildings;
+        for (let item of buidlings) {
+          if (item.id === currentId) {
+            item = currentEleInfo;
+          }
+        }
       },
       deep: true
     }

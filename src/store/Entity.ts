@@ -24,7 +24,8 @@ interface StateIfs {
   // 存放拖放的所有元素
   buildings: BuildingIfs[];
   // 当前选择的element info
-  selectedEleInfo: BuildingIfs | FlexIfs | null;
+  // selectedEleInfo: BuildingIfs | FlexIfs | null;
+  selectedEleInfo: BuildingIfs | null;
 }
 
 export interface StoreIfs {

@@ -10,6 +10,7 @@ const StoreObj: StoreIfs = {
 
     buildings: [],
 
+    // 当前选择的元素的信息
     selectedEleInfo: null,
   },
 

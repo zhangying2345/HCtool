@@ -30,3 +30,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 4. ejs生成html， 生成style文件
 
 5. style 读取style表单
+
+6. 单个flex才允许设置宽度和高度

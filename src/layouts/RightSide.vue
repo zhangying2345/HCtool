@@ -82,9 +82,23 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import * as _ from 'lodash';
 
-@Component
+@Component({
+  watch: {
+    formCustom: {
+      handler: function(newValue, oldValue) {
+        console.log('value changed', newValue);
+        this.$store.state.selectedEleInfo = _.cloneDeep(newValue);
+        console.log('selectedEleInfo', this.$store.state.selectedEleInfo);
+        console.log('selectedEleInfo watch buildings', this.$store.state.buildings);
+      },
+      deep: true
+    }
+  }
+})
 export default class RigthSide extends Vue {
+
   data() {
     return {
       formCustom: {

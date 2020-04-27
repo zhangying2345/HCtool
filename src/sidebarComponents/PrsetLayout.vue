@@ -119,9 +119,11 @@ export default class PresetLayout extends Vue {
       attribute: el.attribute,
       componentName: el.componentName,
       flexList: el.flexList,
+      styleInfo: el.styleInfo
     });
     return cloneEl;
   }
+
   log(evt) {
     window.console.log(evt);
   }

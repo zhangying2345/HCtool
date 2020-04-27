@@ -5,9 +5,13 @@ const htmlTemplate = `
   <% if(item.componentName === 'TCell'){ %>
     <div>
       <% for(const subItem of item.flexList){ %>
-        <div style="">
+        <% if(item.flexList.length === 1) { %>
           <%- renderHtml({buildings: subItem.childrenList}) %>
-        </div>
+        <% } else { %>
+          <div style="">
+            <%- renderHtml({buildings: subItem.childrenList}) %>
+          </div>
+        <% } %>
       <% } %>
     </div>
   <%  } %>

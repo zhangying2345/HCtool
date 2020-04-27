@@ -3,16 +3,20 @@
     <script>
       const htmlTemplate = `
       <% for(const item of buildings){ %>
-      <% if(item.componentName === 'TCell'){ %>
-        <div>
-          <% for(const subItem of item.flexList){ %>
-            <div style="">
-              <%- renderHtml({buildings: subItem.childrenList}) %>
-            </div>
-          <% } %>
-        </div>
-      <%  } %>
-    <% } %>`;
+        <% if(item.componentName === 'TCell'){ %>
+          <div>
+            <% for(const subItem of item.flexList){ %>
+              <% if(item.flexList.length === 1) { %>
+                <%- renderHtml({buildings: subItem.childrenList}) %>
+              <% } else { %>
+                <div style="">
+                  <%- renderHtml({buildings: subItem.childrenList}) %>
+                </div>
+              <% } %>
+            <% } %>
+          </div>
+        <%  } %>
+      <% } %>`;
 
       const renderHtml = (data) => {
         const output = ejs.render(htmlTemplate, data);
@@ -84,11 +88,7 @@
       {
         widthRatio: 1,
         childrenList: [],
-      },
-      {
-        widthRatio: 1,
-        childrenList: [],
-      },
+      }
     ],
   },
   {

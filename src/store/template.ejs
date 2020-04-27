@@ -9,3 +9,12 @@
     </div>
   <%  } %>
 <% } %>
+
+
+<% if(item.flexList.length === 1) { %>
+  <%- renderHtml({buildings: subItem.childrenList}) %>
+<% } else { %>
+  <div style="">
+    <%- renderHtml({buildings: subItem.childrenList}) %>
+  </div>
+<% } %>

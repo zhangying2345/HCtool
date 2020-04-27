@@ -1,13 +1,13 @@
 export interface FlexIfs {
   widthRatio: number;
   childrenList: BuildingIfs[];
+  styleInfo: StyleInfoIfs; // 当cell只有一个容器时读取这个样式
 }
 
 interface StyleInfoIfs {
   name: string; // style 唯一标识符
   style: any; // style 集合
 }
-
 
 export interface BuildingIfs {
   id: string;

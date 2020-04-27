@@ -79,11 +79,13 @@ export default class TCell extends TCellProps {
   get flexList() {
     return this.flexListProp;
   }
+
   data() {
     return {
       cmpList: [],
     };
   }
+
   showEleInfo() {
     this.$store.commit('showEleInfo');
   }

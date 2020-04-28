@@ -40,7 +40,6 @@ export default class CustomLayout extends Vue {
   }
 
   blur() {
-    console.log('qqq', this.value);
     const flexes = this.value.split('-');
     const layout = {
       id: 'Tcell-Id-199',

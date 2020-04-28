@@ -88,18 +88,12 @@ import * as _ from 'lodash';
   watch: {
     formCustom: {
       handler: function(newValue) {
-        this.$store.state.selectedEleInfo
-        currentEleInfo = _.cloneDeep(newValue);
-        console.log('selectedEleInfo', this.$store.state.selectedEleInfo);
-        console.log('selectedEleInfo watch buildings', this.$store.state.buildings);
-        // 根据Id，递归树 替换元素
-        const currentId = currentEleInfo.id;
-        const buidlings = this.$store.state.buildings;
-        for (let item of buidlings) {
-          if (item.id === currentId) {
-            item = currentEleInfo;
-          }
-        }
+        const selectedEleInfo = this.$store.state.selectedEleInfo;
+        const buildings = this.$store.state.buildings;
+
+        selectedEleInfo.styleInfo.style = newValue;
+        const ele = this.tools.getEleById(selectedEleInfo.id, buildings);
+        ele.styleInfo.style = newValue;
       },
       deep: true
     }
@@ -109,33 +103,37 @@ export default class RigthSide extends Vue {
 
   data() {
     return {
-      formCustom: {
-        fxLayout: '',
-        mainAxis: '',
-        crossAxis: '',
-
-        fontSize: '',
-        color: '',
-        background: '',
-        width: '',
-        height: '',
-        margin: '',
-        padding: '',
-        border: '',
-      },
+      formCustom: this.initFormCustom,
     };
   }
 
   get showFlag() {
-    return this.$store.state.showEleInfo;
-  }
-
-  get selectedEleInfo() {
-    return this.$store.state.selectedEleInfo;
+    const flag = this.$store.state.showEleInfo;
+    if (flag) {
+      this.formCustom = this.$store.state.selectedEleInfo.styleInfo.style;
+    }
+    return flag;
   }
 
   close() {
     this.$store.commit('hideEleInfo');
+  }
+
+  get initFormCustom() {
+    return {
+      fxLayout: '',
+      mainAxis: '',
+      crossAxis: '',
+
+      fontSize: '',
+      color: '',
+      background: '',
+      width: '',
+      height: '',
+      margin: '',
+      padding: '',
+      border: '',
+    };
   }
 }
 </script>

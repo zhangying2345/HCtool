@@ -71,12 +71,10 @@ import TCell from '../buildComponents/TCell';
 })
 export default class Building extends Vue {
   get buildings() {
-    console.log('buidings', this.$store.state.buildings);
     return this.$store.state.buildings;
   }
 
   set buildings(value) {
-    console.log('add value', value);
     this.$store.commit('addBuilding', value);
   }
 
@@ -95,7 +93,6 @@ export default class Building extends Vue {
 
   log(evt) {
     window.console.log(evt);
-    console.log('zhangying->buildings', this.buildings);
   }
 }
 </script>

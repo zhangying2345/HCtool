@@ -18,10 +18,8 @@ const StoreObj: StoreIfs = {
 
     // 显示元素信息
     showEleInfo(state: any, elementInfo: BuildingIfs) {
-      console.log(JSON.stringify(state.buildings));
       state.showEleInfo = true;
       state.selectedEleInfo = elementInfo;
-      console.log('zhangying->selectInfo', state.selectedEleInfo);
     },
 
     // 隐藏元素信息
@@ -31,13 +29,11 @@ const StoreObj: StoreIfs = {
 
     // add 拖进来的容器
     addBuilding(state: any, addItem: any) {
-      console.log('zhangying->buidling', JSON.stringify(this.state.buildings));
       state.buildings.push(addItem);
     },
 
     // 根据Id，递归树 删除元素
     deleteEle(state: any, deleteInfo: DeleteEleIfs) {
-      console.log('zhangying->', deleteInfo);
       const elementId = deleteInfo.elementId;
       const parentFlex = deleteInfo.parentFlex;
       for (let i = 0, len = parentFlex.length; i < len; i++) {

@@ -34,7 +34,7 @@
                   shape="circle"
                   icon="ios-cog-outline"
                   type="text"
-                  @click="showEleInfo"
+                  @click="showEleInfo(subFlex)"
                 ></Button>
               </Tooltip>
               <Tooltip content="删除" placement="top">
@@ -86,13 +86,12 @@ export default class TCell extends TCellProps {
     };
   }
 
-  showEleInfo() {
-    this.$store.commit('showEleInfo');
+  showEleInfo(elementInfo) {
+    this.$store.commit('showEleInfo', elementInfo);
   }
 
   log(evt) {
     window.console.log('Current Cell', evt);
-    console.log('zhangying->Tcontainers', this.cmpList);
   }
 
   getFlexWid(widthRatio, flexList) {

@@ -92,8 +92,7 @@ import * as _ from 'lodash';
         const buildings = this.$store.state.buildings;
 
         selectedEleInfo.styleInfo.style = newValue;
-        const ele = this.tools.getEleById(selectedEleInfo.id, buildings);
-        ele.styleInfo.style = newValue;
+        this.tools.getEleById(selectedEleInfo.id, buildings, newValue);
       },
       deep: true
     }

@@ -18,15 +18,12 @@ const htmlTemplate = `
   <%  } %>
 <% } %>`;
 
-const renderHtml = (data: any) => {
-  return ejs.render(htmlTemplate, data);
-};
+// export const renderHtml = (data: any) => {
+//   return ejs.render(htmlTemplate, data);
+// };
 
-// 打平树中的styleInfo，提取到一个数组中
-const generateStyles = function(buidlings: BuildingIfs[]) {
-  const styleArray = [];
-  extractStyle(styleArray, buidlings);
-  return styleArray;
+export  function renderHtml(data: any) {
+  return ejs.render(htmlTemplate, data);
 }
 
 const extractStyle = function(result: any[], buildings: BuildingIfs[]) {
@@ -40,4 +37,13 @@ const extractStyle = function(result: any[], buildings: BuildingIfs[]) {
   }
 }
 
-export { renderHtml, generateStyles };
+// 打平树中的styleInfo，提取到一个数组中
+const generateStyles = function(buidlings: BuildingIfs[]) {
+  const styleArray = [];
+  extractStyle(styleArray, buidlings);
+  return styleArray;
+}
+
+export function teststs() {
+  console.log('zhangying->', );
+}

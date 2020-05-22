@@ -115,6 +115,7 @@ export default class RigthSide extends Vue {
   }
 
   close() {
+    console.log(JSON.stringify(this.$store.state.buildings));
     this.$store.commit('hideEleInfo');
   }
 

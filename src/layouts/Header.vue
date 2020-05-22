@@ -24,7 +24,7 @@
               <Icon type="md-cloud-download" />
               下载
             </template>
-            <MenuItem name="4-1">H5</MenuItem>
+            <MenuItem name="4-1" @click.native="getH5Code">H5</MenuItem>
             <MenuItem name="4-2">小程序</MenuItem>
           </Submenu>
           <MenuItem name="5">
@@ -41,8 +41,22 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
+import { renderHtml, teststs } from '../store/templates';
+
 @Component
-export default class Header extends Vue {}
+export default class Header extends Vue {
+
+  getH5Code() {
+  
+    debugger;
+    teststs();
+    const sourceCodeObj = this.$store.state.buildings;
+    const generateCode = renderHtml({
+      buildings: sourceCodeObj
+    });
+    console.log('generateCode', generateCode);
+  }
+}
 </script>
 
 <style lang="less" scoped>

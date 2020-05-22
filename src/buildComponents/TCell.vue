@@ -47,7 +47,9 @@
               </Tooltip>
             </div>
           </div>
-          <component v-bind:is="subFlex.componentName"></component>
+          <component
+          :is="subFlex.componentName"
+          :flexListProp="subFlex.flexList"></component>
         </div>
       </draggable>
     </div>
@@ -147,5 +149,12 @@ export default class TCell extends TCellProps {
 }
 
 .Tcell-item {
+  background: white;
+  border: 1px solid #eee;
+}
+
+.Tcell-item:hover {
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
+  border-color: transparent;
 }
 </style>

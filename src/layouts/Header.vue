@@ -40,6 +40,7 @@
 <script>
 import Vue from 'vue';
 import Component from 'vue-class-component';
+import * as format from 'xml-formatter';
 
 import { renderHtml } from '../store/templates';
 
@@ -49,7 +50,9 @@ export default class Header extends Vue {
   getH5Code() {
     const sourceCodeObj = this.$store.state.buildings;
     const generateCode = renderHtml(sourceCodeObj);
-    console.log('generateCode', generateCode);
+    const formattedXml = format(`<root>${generateCode}</root>`);
+    console.log('formattedXml', formattedXml);
+    // console.log('generateCode', generateCode);
   }
 }
 </script>

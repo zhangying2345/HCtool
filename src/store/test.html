@@ -2,6 +2,7 @@
     <script src="../../node_modules//ejs//ejs.js"></script>
     <script>
       const htmlTemplate = `
+    <% if(buildings.length >= 0) { %>
       <% for(const item of buildings){ %>
         <% if(item.componentName === 'TCell'){ %>
           <div>
@@ -16,7 +17,8 @@
             <% } %>
           </div>
         <%  } %>
-      <% } %>`;
+      <%  } %>
+    <% } %>`;
 
       const renderHtml = (data) => {
         const output = ejs.render(htmlTemplate, data);
@@ -24,205 +26,40 @@
         return ejs.render(htmlTemplate, data);
       };
       const buildings = [
-          {
-            id: 'o9XMeQ4DA',
-            name: 'Cell',
-            attribute: 'LAYOUT',
-            componentName: 'TCell',
-            flexList: [
-              {
-                widthRatio: 1,
-                childrenList: []
-              }
-            ],
-            styleInfo: {
-              name: 'test',
-              style: {}
+        {
+          id: 'K191WUm0b',
+          name: 'Cell',
+          attribute: 'LAYOUT',
+          componentName: 'TCell',
+          flexList: [
+            {
+              widthRatio: 1,
+              childrenList: [
+                {
+                  id: 'i6ksr_cKoG',
+                  name: 'Cell',
+                  attribute: 'LAYOUT',
+                  componentName: 'TCell',
+                  flexList: [
+                    {
+                      widthRatio: 1,
+                      childrenList: []
+                    }
+                  ],
+                  styleInfo: {
+                    name: 'test',
+                    style: {}
+                  }
+                }
+              ]
             }
-          },
-          {
-            id: 'Xuz9_KSMk',
-            name: 'Cell',
-            attribute: 'LAYOUT',
-            componentName: 'TCell',
-            flexList: [
-              {
-                widthRatio: 1,
-                childrenList: [
-                  {
-                    id: 'UriDK22nH',
-                    name: 'Cell',
-                    attribute: 'LAYOUT',
-                    componentName: 'TCell',
-                    flexList: [
-                      {
-                        widthRatio: 1,
-                        childrenList: []
-                      },
-                      {
-                        widthRatio: 1,
-                        childrenList: []
-                      }
-                    ],
-                    styleInfo: {
-                      name: 'test',
-                      style: {}
-                    }
-                  }
-                ]
-              },
-              {
-                widthRatio: 1,
-                childrenList: [
-                  {
-                    id: 'S-rU5G9DB',
-                    name: 'Cell',
-                    attribute: 'LAYOUT',
-                    componentName: 'TCell',
-                    flexList: [
-                      {
-                        widthRatio: 1,
-                        childrenList: []
-                      },
-                      {
-                        widthRatio: 1,
-                        childrenList: []
-                      },
-                      {
-                        widthRatio: 1,
-                        childrenList: []
-                      }
-                    ],
-                    styleInfo: {
-                      name: 'test',
-                      style: {}
-                    }
-                  }
-                ]
-              }
-            ],
-            styleInfo: {
-              name: 'test',
-              style: {}
-            }
-          },
-          {
-            id: 'wSOhqa7Cy',
-            name: 'Cell',
-            attribute: 'LAYOUT',
-            componentName: 'TCell',
-            flexList: [
-              {
-                widthRatio: 1,
-                childrenList: [
-                  {
-                    id: '4a4zmYEYo',
-                    name: 'Cell',
-                    attribute: 'LAYOUT',
-                    componentName: 'TCell',
-                    flexList: [
-                      {
-                        widthRatio: 1,
-                        childrenList: []
-                      }
-                    ],
-                    styleInfo: {
-                      name: 'test',
-                      style: {}
-                    }
-                  }
-                ]
-              },
-              {
-                widthRatio: 1,
-                childrenList: [
-                  {
-                    id: 'qcnBbSKEt',
-                    name: 'Cell',
-                    attribute: 'LAYOUT',
-                    componentName: 'TCell',
-                    flexList: [
-                      {
-                        widthRatio: 1,
-                        childrenList: [
-                          {
-                            id: 'U2ayqsWrd',
-                            name: 'Cell',
-                            attribute: 'LAYOUT',
-                            componentName: 'TCell',
-                            flexList: [
-                              {
-                                widthRatio: 1,
-                                childrenList: []
-                              },
-                              {
-                                widthRatio: 1,
-                                childrenList: []
-                              },
-                              {
-                                widthRatio: 1,
-                                childrenList: []
-                              }
-                            ],
-                            styleInfo: {
-                              name: 'test',
-                              style: {}
-                            }
-                          }
-                        ]
-                      },
-                      {
-                        widthRatio: 1,
-                        childrenList: []
-                      },
-                      {
-                        widthRatio: 1,
-                        childrenList: []
-                      }
-                    ],
-                    styleInfo: {
-                      name: 'test',
-                      style: {}
-                    }
-                  }
-                ]
-              },
-              {
-                widthRatio: 1,
-                childrenList: [
-                  {
-                    id: 'jVrPWD7Cq',
-                    name: 'Cell',
-                    attribute: 'LAYOUT',
-                    componentName: 'TCell',
-                    flexList: [
-                      {
-                        widthRatio: 1,
-                        childrenList: []
-                      },
-                      {
-                        widthRatio: 1,
-                        childrenList: []
-                      },
-                      {
-                        widthRatio: 1,
-                        childrenList: []
-                      }
-                    ],
-                    styleInfo: {
-                      name: 'test',
-                      style: {}
-                    }
-                  }
-                ]
-              }
-            ],
-            styleInfo: {
-              name: 'test',
-              style: {}
-            }
+          ],
+          styleInfo: {
+            name: 'test',
+            style: {}
           }
-        ]
+        }
+      ]
 
     const result = renderHtml({buildings});
     console.log('result', result);

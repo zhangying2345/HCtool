@@ -41,19 +41,14 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 
-import { renderHtml, teststs } from '../store/templates';
+import { renderHtml } from '../store/templates';
 
 @Component
 export default class Header extends Vue {
 
   getH5Code() {
-  
-    debugger;
-    teststs();
     const sourceCodeObj = this.$store.state.buildings;
-    const generateCode = renderHtml({
-      buildings: sourceCodeObj
-    });
+    const generateCode = renderHtml(sourceCodeObj);
     console.log('generateCode', generateCode);
   }
 }

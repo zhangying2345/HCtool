@@ -53,6 +53,67 @@ export default class Header extends Vue {
     const formattedXml = format(`<root>${generateCode}</root>`);
     console.log('formattedXml', formattedXml);
     // console.log('generateCode', generateCode);
+    this.getCssCode();
+  }
+
+  getCssCode() {
+    const sourceCodeObj = this.$store.state.buildings;
+    let styleInfoArray = [];
+    styleInfoArray = this.flatMap(sourceCodeObj, styleInfoArray);
+    console.log('zhangying->css', styleInfoArray);
+
+  }
+
+  // 解析数据信息，打平样式
+  flatMap(buildings, styleInfoArray) {
+    for(const item of buildings) {
+      const styleInfo = {
+        id: item.id,
+        style: item.styleInfo.style
+      };
+      styleInfoArray.push(styleInfo);
+      if (item.flexList.length > 0) {
+        for (const flexListItem of item.flexList) {
+          if (flexListItem.childrenList.length > 0) {
+            this.flatMap(flexListItem.childrenList, styleInfoArray);
+          }
+        }
+      }
+    }
+    return this.formatCss(styleInfoArray);
+  }
+
+  // 格式化css样式
+  formatCss(styleInfoArray) {
+    let cssResult = '';
+    for (const item of styleInfoArray) {
+      const style = JSON.stringify(item.style);
+      const tempStyleStr = `.${item.id} ${style}`;
+      cssResult = cssResult + tempStyleStr;
+    }
+    cssResult = this.CSSdecode(cssResult);
+    return cssResult;
+  }
+
+  CSSdecode(code) {
+    code = code.replace(/,/ig,';');
+    code = code.replace(/"/ig,'');
+
+    code = code.replace(/(\s){2,}/ig,'$1');
+    code = code.replace(/(\S)\s*\{/ig,'$1 {');
+    code = code.replace(/\*\/(.[^}{]*)}/ig,'*/\n$1}');
+    code = code.replace(/\/\*/ig,'\n/*');
+    code = code.replace(/;\s*(\S)/ig,';\n\t$1');
+    code = code.replace(/\}\s*(\S)/ig,'}\n$1');
+    code = code.replace(/\n\s*\}/ig,'\n}');
+    code = code.replace(/\{\s*(\S)/ig,'{\n\t$1');
+    code = code.replace(/(\S)\s*\*\//ig,'$1*/');
+    code = code.replace(/\*\/\s*([^}{]\S)/ig,'*/\n\t$1');
+    code = code.replace(/(\S)\}/ig,'$1\n}');
+    code = code.replace(/(\n){2,}/ig,'\n');
+    code = code.replace(/:/ig,':');
+    code = code.replace(/  /ig,' ');
+    return code;
   }
 }
 </script>

@@ -5,7 +5,7 @@ export interface FlexIfs {
 }
 
 interface StyleInfoIfs {
-  name: string; // style 唯一标识符
+  name: string; // style 唯一标识符, 暂时可以用13行的id
   style: any; // style 集合
 }
 

@@ -95,6 +95,7 @@ export default class Header extends Vue {
     return cssResult;
   }
 
+  // https://tool.lanrentuku.com/cssformat/
   CSSdecode(code) {
     code = code.replace(/,/ig,';');
     code = code.replace(/"/ig,'');

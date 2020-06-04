@@ -138,8 +138,8 @@ export default class Header extends Vue {
 
   // https://tool.lanrentuku.com/cssformat/
   CSSdecode(code) {
-    // code = code.replace(/,/ig,';');
-    // code = code.replace(/"/ig,'');
+    code = code.replace(/,/ig,';');
+    code = code.replace(/"/ig,'');
 
     code = code.replace(/(\s){2,}/ig,'$1');
     code = code.replace(/(\S)\s*\{/ig,'$1 {');

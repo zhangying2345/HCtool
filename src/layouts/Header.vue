@@ -34,6 +34,19 @@
         </Menu>
       </div>
     </div>
+
+    <Modal
+      v-model="showCode"
+      title="生成代码"
+      ok-text="复制"
+      cancel-text="取消"
+      @on-ok="ok">
+      <!-- <div>{{htmlCode}}</div> -->
+      <div><textarea ref="textAreaRef" class="textArea" v-model="allCode"></textarea></div>
+      <!-- <div><textarea class="textArea" v-model="cssCode"></textarea></div> -->
+      
+      <!-- <textarea v-model="cssCode"></textarea> -->
+    </Modal>
   </div>
 </template>
 
@@ -47,11 +60,35 @@ import { renderHtml } from '../store/templates';
 @Component
 export default class Header extends Vue {
 
+  data() {
+    return {
+      showCode: false,
+      htmlCode: '',
+      cssCode: '',
+    }
+  }
+
+  get allCode() {
+    return this.htmlCode + '\n' + this.cssCode;
+  }
+
+  ok() {
+    const input = this.$refs.textAreaRef;
+    input.select();
+    if (document.execCommand('copy')) {
+      document.execCommand('copy');
+      console.log('复制成功');
+    }
+    this.$Message.info('已复制到剪切板');
+  }
+
   getH5Code() {
+    this.showCode = true;
     const sourceCodeObj = this.$store.state.buildings;
     const generateCode = renderHtml(sourceCodeObj);
     const formattedXml = format(`<root>${generateCode}</root>`);
-    console.log('formattedXml', formattedXml);
+    console.log('formattedXml\n', formattedXml);
+    this.htmlCode = formattedXml;
     // console.log('generateCode', generateCode);
     this.getCssCode();
   }
@@ -60,18 +97,22 @@ export default class Header extends Vue {
     const sourceCodeObj = this.$store.state.buildings;
     let styleInfoArray = [];
     styleInfoArray = this.flatMap(sourceCodeObj, styleInfoArray);
-    console.log('zhangying->css', styleInfoArray);
+    this.cssCode = styleInfoArray;
+    console.log('zhangying->css\n', styleInfoArray);
 
   }
 
   // 解析数据信息，打平样式
   flatMap(buildings, styleInfoArray) {
     for(const item of buildings) {
-      const styleInfo = {
-        id: item.id,
-        style: item.styleInfo.style
-      };
-      styleInfoArray.push(styleInfo);
+      console.log('eeeeeeee');
+      if (!this.isEmptyObject(item.styleInfo.style)) {
+        const styleInfo = {
+          id: item.id,
+          style: item.styleInfo.style
+        };
+        styleInfoArray.push(styleInfo);
+      }
       if (item.flexList.length > 0) {
         for (const flexListItem of item.flexList) {
           if (flexListItem.childrenList.length > 0) {
@@ -97,8 +138,8 @@ export default class Header extends Vue {
 
   // https://tool.lanrentuku.com/cssformat/
   CSSdecode(code) {
-    code = code.replace(/,/ig,';');
-    code = code.replace(/"/ig,'');
+    // code = code.replace(/,/ig,';');
+    // code = code.replace(/"/ig,'');
 
     code = code.replace(/(\s){2,}/ig,'$1');
     code = code.replace(/(\S)\s*\{/ig,'$1 {');
@@ -115,6 +156,10 @@ export default class Header extends Vue {
     code = code.replace(/:/ig,':');
     code = code.replace(/  /ig,' ');
     return code;
+  }
+
+  isEmptyObject(obj) {
+    return JSON.stringify(obj) === '{}';
   }
 }
 </script>
@@ -173,5 +218,13 @@ export default class Header extends Vue {
       }
     }
   }
+}
+
+.textArea {
+  color: #515a6e;
+  min-height: 440px;
+  border: 0;
+  resize: none;
+  width: 100%;
 }
 </style>

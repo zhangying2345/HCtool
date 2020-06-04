@@ -5,7 +5,7 @@ const htmlTemplate = `
 <% if(buildings.length >= 0) { %>
   <% for(const item of buildings){ %>
     <% if(item.componentName === 'TCell'){ %>
-      <div class="12">
+      <div class="<%= item.id %>">
         <% for(const subItem of item.flexList){ %>
           <% if(item.flexList.length === 1) { %>
             <%- renderHtml(subItem.childrenList) -%>
@@ -26,12 +26,10 @@ const htmlTemplate = `
 // };
 
 export  function renderHtml(data: any) {
-  console.log('eeeeeee', data);
   const out = ejs.render(htmlTemplate, {
     buildings: data,
     renderHtml
   });
-  console.log('out', out);
   return out;
 }
 

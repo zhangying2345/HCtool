@@ -33,3 +33,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 5. style 读取style表单
 
 6. 单个flex才允许设置宽度和高度
+
+6/4TODO:
+1. 导出代码时一些div默认应该有flex布局
+2. 添加文本组件
+3. 添加清空功能
+4. 样式调整支持即时预览
+

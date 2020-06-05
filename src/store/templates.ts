@@ -20,33 +20,10 @@ const htmlTemplate = `
   <% } %>
 <% } %>`;
 
-
-// export const renderHtml = (data: any) => {
-//   return ejs.render(htmlTemplate, data);
-// };
-
-export  function renderHtml(data: any) {
+export function renderHtml(data: any) {
   const out = ejs.render(htmlTemplate, {
     buildings: data,
     renderHtml
   });
   return out;
-}
-
-const extractStyle = function(result: any[], buildings: BuildingIfs[]) {
-  for(const item of buildings) {
-    result.push(item.styleInfo);
-    if(item.flexList.length) {
-      for (const subItem of item.flexList) {
-        extractStyle(result, subItem.childrenList);
-      }
-    }
-  }
-}
-
-// 打平树中的styleInfo，提取到一个数组中
-const generateStyles = function(buidlings: BuildingIfs[]) {
-  const styleArray = [];
-  extractStyle(styleArray, buidlings);
-  return styleArray;
 }

@@ -41,11 +41,7 @@
       ok-text="复制"
       cancel-text="取消"
       @on-ok="ok">
-      <!-- <div>{{htmlCode}}</div> -->
       <div><textarea ref="textAreaRef" class="textArea" v-model="allCode"></textarea></div>
-      <!-- <div><textarea class="textArea" v-model="cssCode"></textarea></div> -->
-      
-      <!-- <textarea v-model="cssCode"></textarea> -->
     </Modal>
   </div>
 </template>
@@ -54,7 +50,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import * as format from 'xml-formatter';
-
+import { BuildingIfs } from '../store/Entity';
 import { renderHtml } from '../store/templates';
 
 @Component
@@ -105,7 +101,7 @@ export default class Header extends Vue {
   // 解析数据信息，打平样式
   flatMap(buildings, styleInfoArray) {
     for(const item of buildings) {
-      console.log('eeeeeeee');
+      // this.setDefaultCellStyle(item);
       if (!this.isEmptyObject(item.styleInfo.style)) {
         const styleInfo = {
           id: item.id,
@@ -134,6 +130,17 @@ export default class Header extends Vue {
     }
     cssResult = this.CSSdecode(cssResult);
     return cssResult;
+  }
+
+  /**
+   * 给容器添加默认flex布局
+   * buildingIfsItem: BuildingIfs
+   */
+  setDefaultCellStyle(buildingIfsItem) {
+    if(buildingIfsItem.componentName !== 'TCell') { return; }
+    Object.assign(buildingIfsItem.styleInfo.style, {
+      display: 'flex'
+    });
   }
 
   // https://tool.lanrentuku.com/cssformat/

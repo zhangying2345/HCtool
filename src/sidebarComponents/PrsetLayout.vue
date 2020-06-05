@@ -54,7 +54,9 @@ export default class PresetLayout extends Vue {
           componentName: 'TCell',
           styleInfo: {
             name: 'test',
-            style: {}
+            style: {
+              display: 'flex'
+            }
           },
           flexList: [
             {
@@ -70,7 +72,9 @@ export default class PresetLayout extends Vue {
           componentName: 'TCell',
           styleInfo: {
             name: 'test',
-            style: {}
+            style: {
+              display: 'flex'
+            }
           },
           flexList: [
             {
@@ -90,7 +94,9 @@ export default class PresetLayout extends Vue {
           componentName: 'TCell',
           styleInfo: {
             name: 'test',
-            style: {}
+            style: {
+              display: 'flex'
+            }
           },
           flexList: [
             {

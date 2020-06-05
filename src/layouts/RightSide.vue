@@ -7,8 +7,8 @@
     <Divider orientation="center">元素属性</Divider>
 
     <Form ref="formCustom" :model="formCustom" :label-width="80">
-      <FormItem label="fxLayout" prop="fxLayout">
-        <Select v-model="formCustom.fxLayout" placeholder="Select fxLayout">
+      <FormItem label="flexDirection" prop="flex-direction">
+        <Select v-model="formCustom['flex-direction']" placeholder="Select flexDirection">
           <Option value="row">row</Option>
           <Option value="column">column</Option>
           <Option value="row-reverse">row-reverse</Option>
@@ -18,9 +18,9 @@
       <FormItem label="FxLayoutAlign">
         <Row>
           <Col span="11">
-            <FormItem prop="mainAxis">
+            <FormItem prop="justify-content">
               <Select
-                v-model="formCustom.mainAxis"
+                v-model="formCustom['justify-content']"
                 placeholder="Select mainAxis"
               >
                 <Option value="start">start</Option>
@@ -34,9 +34,9 @@
           </Col>
           <Col span="2" style="text-align: center">-</Col>
           <Col span="11">
-            <FormItem prop="crossAxis">
+            <FormItem prop="align-items">
               <Select
-                v-model="formCustom.crossAxis"
+                v-model="formCustom['align-items']"
                 placeholder="Select crossAxis"
               >
                 <Option value="start">start</Option>
@@ -121,9 +121,10 @@ export default class RigthSide extends Vue {
 
   get initFormCustom() {
     return {
-      fxLayout: '',
-      mainAxis: '',
-      crossAxis: '',
+      display: 'flex',
+      ['flex-direction']: '',
+      ['justify-content']: '',
+      ['align-items']: '',
 
       fontSize: '',
       color: '',

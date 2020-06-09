@@ -5,8 +5,17 @@ export interface FlexIfs {
 }
 
 interface StyleInfoIfs {
-  name: string; // style 唯一标识符, 暂时可以用13行的id
+  name: string; // style 唯一标识符, 暂时可以用BuildingIfs的id
   style: any; // style 集合
+}
+
+interface ModifyAttrCtl {
+  /**
+   * 是否可以编辑flex属性
+   * 规定：只有一个子容器的容器可以编辑，有多个子容器的容器不可编辑
+   * 缺省 默认不可以编辑
+   */
+  canModifyFlex: boolean;
 }
 
 export interface BuildingIfs {
@@ -16,6 +25,8 @@ export interface BuildingIfs {
   componentName: string;
   flexList: FlexIfs[];
   styleInfo: StyleInfoIfs;
+  // 设置控制元素属性的一些开关
+  modifyAttrCtl: Partial<ModifyAttrCtl>;
 }
 
 interface StateIfs {

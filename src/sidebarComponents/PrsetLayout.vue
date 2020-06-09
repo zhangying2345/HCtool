@@ -64,6 +64,9 @@ export default class PresetLayout extends Vue {
               childrenList: [],
             },
           ],
+          modifyAttrCtl: {
+            canModifyFlex: true
+          }
         },
         {
           id: 'TCell-Id-101',
@@ -125,7 +128,8 @@ export default class PresetLayout extends Vue {
       attribute: el.attribute,
       componentName: el.componentName,
       flexList: el.flexList,
-      styleInfo: el.styleInfo
+      styleInfo: el.styleInfo,
+      modifyAttrCtl: el.modifyAttrCtl
     });
     return cloneEl;
   }

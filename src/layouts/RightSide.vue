@@ -7,7 +7,7 @@
     <Divider orientation="center">元素属性</Divider>
 
     <Form ref="formCustom" :model="formCustom" :label-width="80">
-      <FormItem label="flexDirection" prop="flex-direction">
+      <FormItem v-if="modifyAttrCtl.canModifyFlex" label="flexDirection" prop="flex-direction">
         <Select v-model="formCustom['flex-direction']" placeholder="Select flexDirection">
           <Option value="row">row</Option>
           <Option value="column">column</Option>
@@ -15,7 +15,7 @@
           <Option value="column-reverse">column-reverse</Option>
         </Select>
       </FormItem>
-      <FormItem label="FxLayoutAlign">
+      <FormItem v-if="modifyAttrCtl.canModifyFlex" label="FxLayoutAlign">
         <Row>
           <Col span="11">
             <FormItem prop="justify-content">
@@ -103,6 +103,9 @@ export default class RigthSide extends Vue {
   data() {
     return {
       formCustom: this.initFormCustom,
+      modifyAttrCtl: {
+        canModifyFlex: false
+      }
     };
   }
 
@@ -110,6 +113,10 @@ export default class RigthSide extends Vue {
     const flag = this.$store.state.showEleInfo;
     if (flag) {
       this.formCustom = this.$store.state.selectedEleInfo.styleInfo.style;
+      this.modifyAttrCtl = this.$store.state.selectedEleInfo.modifyAttrCtl || {
+        canModifyFlex: false
+      };
+
     }
     return flag;
   }

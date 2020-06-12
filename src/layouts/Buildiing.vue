@@ -52,14 +52,15 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import draggable from 'vuedraggable';
+import { BuildingIfs } from '@ifs/entity';
 
-import RigthSide from './RightSide';
-import TButton from '../buildComponents/TButton';
-import TCell from '../buildComponents/TCell';
+import RigthSide from './RightSide.vue';
+import TButton from '../buildComponents/TButton.vue';
+import TCell from '../buildComponents/TCell.vue';
 
 @Component({
   components: {
@@ -78,7 +79,7 @@ export default class Building extends Vue {
     this.$store.commit('addBuilding', value);
   }
 
-  deleteEle(elementId) {
+  deleteEle(elementId: string) {
     const buildings = this.$store.state.buildings;
     const deleteEle = {
       elementId,
@@ -87,11 +88,11 @@ export default class Building extends Vue {
     this.$store.commit('deleteEle', deleteEle);
   }
 
-  showEleInfo(elementInfo) {
+  showEleInfo(elementInfo: BuildingIfs) {
     this.$store.commit('showEleInfo', elementInfo);
   }
 
-  log(evt) {
+  log(evt: any) {
     window.console.log(evt);
   }
 }

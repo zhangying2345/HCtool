@@ -79,20 +79,22 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import * as _ from 'lodash';
+import Tool from '../tools/common';
+import { BuildingIfs } from '../store/Entity';
 
 @Component({
   watch: {
     formCustom: {
-      handler: function(newValue) {
+      handler(newValue: any) {
         const selectedEleInfo = this.$store.state.selectedEleInfo;
-        const buildings = this.$store.state.buildings;
+        const buildings: BuildingIfs[] = this.$store.state.buildings;
 
         selectedEleInfo.styleInfo.style = newValue;
-        this.tools.getEleById(selectedEleInfo.id, buildings, newValue);
+        Tool.getEleById(selectedEleInfo.id, buildings, newValue);
       },
       deep: true
     }
@@ -100,14 +102,10 @@ import * as _ from 'lodash';
 })
 export default class RigthSide extends Vue {
 
-  data() {
-    return {
-      formCustom: this.initFormCustom,
-      modifyAttrCtl: {
-        canModifyFlex: false
-      }
-    };
-  }
+  formCustom = this.initFormCustom;
+  modifyAttrCtl = {
+    canModifyFlex: false
+  };
 
   get showFlag() {
     const flag = this.$store.state.showEleInfo;

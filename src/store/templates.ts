@@ -23,7 +23,7 @@ const htmlTemplate = `
 export function renderHtml(data: any) {
   const out = ejs.render(htmlTemplate, {
     buildings: data,
-    renderHtml
+    renderHtml,
   });
   return out;
 }

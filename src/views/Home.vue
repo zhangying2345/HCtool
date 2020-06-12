@@ -7,7 +7,7 @@
       </div>
       <Building class="content"></Building>
     </div>
-    <test></test>
+    <!-- <test></test> -->
   </div>
 </template>
 
@@ -18,30 +18,30 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 import Header from '../layouts/Header';
-import Test from '../test/TestDrag';
+// import Test from '../test/TestDrag';
 import Sidebar from '../layouts/Sidebar';
 import Building from '../layouts/Buildiing';
 
 @Component({
   components: {
     Header,
-    Test,
+    // Test,
     Sidebar,
     Building,
   },
 })
 export default class Home extends Vue {
-  /** 点击预览
- * r.onclick = function() {
-			var n = t.value;
-			if (n != "") {
-				var r = window.open("", "", "");
-				r.opener = null,
-				r.document.write(n),
-				r.document.close()
-			} else alert("请将需要运行的HTML填写到输入框后再运行！", "alert", "运行提示")
-		}
- */
+//  点击预览
+//  r.onclick = function() {
+//     var n = t.value;
+//     if (n != "") {
+//       var r = window.open("", "", "");
+//       r.opener = null,
+//       r.document.write(n),
+//       r.document.close()
+//     } else alert("请将需要运行的HTML填写到输入框后再运行！", "alert", "运行提示")
+//   }
+
 }
 </script>
 

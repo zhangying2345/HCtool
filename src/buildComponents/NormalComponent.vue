@@ -20,7 +20,7 @@ import * as Shortid from 'shortid';
 export default {
   name: 'NormalComponents',
   components: {
-    draggable
+    draggable,
   },
   data() {
     return {
@@ -32,7 +32,7 @@ export default {
           componentName: 'TButton',
           styleInfo: {
             name: 'test',
-            style: {}
+            style: {},
           }
         }
       ]

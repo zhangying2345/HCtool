@@ -46,30 +46,31 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import * as format from 'xml-formatter';
 import { BuildingIfs } from '../store/Entity';
 import { renderHtml } from '../store/templates';
 
+interface TempStyles {
+  id: string;
+  style: any;
+}
+
 @Component
 export default class Header extends Vue {
 
-  data() {
-    return {
-      showCode: false,
-      htmlCode: '',
-      cssCode: '',
-    }
-  }
+  showCode = false;
+  htmlCode = '';
+  cssCode = '';
 
   get allCode() {
     return this.htmlCode + '\n' + this.cssCode;
   }
 
   ok() {
-    const input = this.$refs.textAreaRef;
+    const input = this.$refs.textAreaRef as HTMLInputElement;
     input.select();
     if (document.execCommand('copy')) {
       document.execCommand('copy');
@@ -80,7 +81,7 @@ export default class Header extends Vue {
 
   getH5Code() {
     this.showCode = true;
-    const sourceCodeObj = this.$store.state.buildings;
+    const sourceCodeObj: BuildingIfs[] = this.$store.state.buildings;
     const generateCode = renderHtml(sourceCodeObj);
     const formattedXml = format(`<div>${generateCode}</div>`);
     console.log('formattedXml\n', formattedXml);
@@ -90,17 +91,15 @@ export default class Header extends Vue {
   }
 
   getCssCode() {
-    const sourceCodeObj = this.$store.state.buildings;
-    let styleInfoArray = [];
-    styleInfoArray = this.flatMap(sourceCodeObj, styleInfoArray);
-    this.cssCode = styleInfoArray;
-    console.log('zhangying->css\n', styleInfoArray);
-
+    const sourceCodeObj: BuildingIfs[] = this.$store.state.buildings;
+    const styleInfoArray: TempStyles[] = [];
+    this.cssCode = this.flatMap(sourceCodeObj, styleInfoArray);
+    console.log('zhangying->css\n', this.cssCode);
   }
 
   // 解析数据信息，打平样式
-  flatMap(buildings, styleInfoArray) {
-    for(const item of buildings) {
+  flatMap(buildings: BuildingIfs[], styleInfoArray: TempStyles[]): string {
+    for (const item of buildings) {
       // 提取容器的styleInfo样式
       if (!this.isEmptyObject(item.styleInfo.style)) {
         const styleInfo = {
@@ -122,7 +121,7 @@ export default class Header extends Vue {
             style: {
               flex: `${subItem.widthRatio} 0 auto`
             }
-          }
+          };
           styleInfoArray.push(subFlexStyle);
         }
       }
@@ -138,7 +137,7 @@ export default class Header extends Vue {
   }
 
   // 格式化css样式
-  formatCss(styleInfoArray) {
+  formatCss(styleInfoArray: TempStyles[]): string {
     let cssResult = '';
     for (const item of styleInfoArray) {
       const style = JSON.stringify(item.style);
@@ -150,28 +149,28 @@ export default class Header extends Vue {
   }
 
   // https://tool.lanrentuku.com/cssformat/
-  CSSdecode(code) {
-    code = code.replace(/,/ig,';');
-    code = code.replace(/"/ig,'');
+  CSSdecode(code: string): string {
+    code = code.replace(/,/ig, ';');
+    code = code.replace(/"/ig, '');
 
-    code = code.replace(/(\s){2,}/ig,'$1');
-    code = code.replace(/(\S)\s*\{/ig,'$1 {');
-    code = code.replace(/\*\/(.[^}{]*)}/ig,'*/\n$1}');
-    code = code.replace(/\/\*/ig,'\n/*');
-    code = code.replace(/;\s*(\S)/ig,';\n\t$1');
-    code = code.replace(/\}\s*(\S)/ig,'}\n$1');
-    code = code.replace(/\n\s*\}/ig,'\n}');
-    code = code.replace(/\{\s*(\S)/ig,'{\n\t$1');
-    code = code.replace(/(\S)\s*\*\//ig,'$1*/');
-    code = code.replace(/\*\/\s*([^}{]\S)/ig,'*/\n\t$1');
-    code = code.replace(/(\S)\}/ig,'$1\n}');
-    code = code.replace(/(\n){2,}/ig,'\n');
-    code = code.replace(/:/ig,':');
-    code = code.replace(/  /ig,' ');
+    code = code.replace(/(\s){2,}/ig, '$1');
+    code = code.replace(/(\S)\s*\{/ig, '$1 {');
+    code = code.replace(/\*\/(.[^}{]*)}/ig, '*/\n$1}');
+    code = code.replace(/\/\*/ig, '\n/*');
+    code = code.replace(/;\s*(\S)/ig, ';\n\t$1');
+    code = code.replace(/\}\s*(\S)/ig, '}\n$1');
+    code = code.replace(/\n\s*\}/ig, '\n}');
+    code = code.replace(/\{\s*(\S)/ig, '{\n\t$1');
+    code = code.replace(/(\S)\s*\*\//ig, '$1*/');
+    code = code.replace(/\*\/\s*([^}{]\S)/ig, '*/\n\t$1');
+    code = code.replace(/(\S)\}/ig, '$1\n}');
+    code = code.replace(/(\n){2,}/ig, '\n');
+    code = code.replace(/:/ig, ':');
+    code = code.replace(/  /ig, ' ');
     return code;
   }
 
-  isEmptyObject(obj) {
+  isEmptyObject(obj: any) {
     return JSON.stringify(obj) === '{}';
   }
 }

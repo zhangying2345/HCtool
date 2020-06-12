@@ -46,8 +46,8 @@ const StoreObj: StoreIfs = {
           const childItme = item.flexList[j];
           this.commit('deleteEle', {
             elementId,
-            parentFlex: childItme.childrenList
-          })
+            parentFlex: childItme.childrenList,
+          });
         }
       }
     },

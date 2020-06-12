@@ -1,12 +1,13 @@
 <template>
   <div class="Tbutton-container">
     BUTTON
+  <div>{{idProp}}</div>
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import Component, { mixins } from 'vue-class-component';
 
 const TButtonProps = Vue.extend({
   props: {
@@ -14,9 +15,7 @@ const TButtonProps = Vue.extend({
   },
 });
 
-@Component({
-  components: {},
-})
+@Component
 export default class TButton extends TButtonProps {
   get id() {
     return this.idProp;

@@ -1,7 +1,7 @@
 export interface FlexIfs {
   widthRatio: number;
   childrenList: BuildingIfs[];
-  styleInfo: StyleInfoIfs; // 当cell只有一个容器时读取这个样式
+  styleInfo?: StyleInfoIfs; // 当cell只有一个容器时读取这个样式
 }
 
 interface StyleInfoIfs {
@@ -26,7 +26,7 @@ export interface BuildingIfs {
   flexList: FlexIfs[];
   styleInfo: StyleInfoIfs;
   // 设置控制元素属性的一些开关
-  modifyAttrCtl: Partial<ModifyAttrCtl>;
+  modifyAttrCtl?: Partial<ModifyAttrCtl>;
 }
 
 interface StateIfs {

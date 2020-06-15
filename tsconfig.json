@@ -10,16 +10,16 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "noImplicitAny": false,
     "baseUrl": ".",
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "jest"
     ],
     "paths": {
-      "@ifs/entity": ["src/store/index"],
       "@/*": [
         "src/*"
-      ]
+      ],
+      "@ifs/entity": ["src/store/Entity.ts"],
     },
     "lib": [
       "esnext",

@@ -10,14 +10,14 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import draggable from 'vuedraggable';
 
-import PrsetLayout from '../sidebarComponents/PrsetLayout';
-import CustomLayout from '../sidebarComponents/CustomLayout';
-import NormalComponent from '../buildComponents/NormalComponent';
+import PrsetLayout from '../sidebarComponents/PrsetLayout.vue';
+import CustomLayout from '../sidebarComponents/CustomLayout.vue';
+import NormalComponent from '../buildComponents/NormalComponent.vue';
 
 @Component({
   components: {
@@ -28,25 +28,6 @@ import NormalComponent from '../buildComponents/NormalComponent';
   },
 })
 export default class Sidebar extends Vue {
-  data() {
-    return {
-    };
-  }
-
-  add() {
-    this.list.push({ name: 'Juan' });
-  }
-  replace() {
-    this.list = [{ name: 'Edgard' }];
-  }
-  clone(el) {
-    return {
-      name: el.name + ' cloned',
-    };
-  }
-  log(evt) {
-    window.console.log(evt);
-  }
 }
 </script>
 

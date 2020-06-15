@@ -56,12 +56,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import draggable from 'vuedraggable';
+import { BuildingIfs, FlexIfs } from '@ifs/entity';
 
-import TButton from './TButton';
+import TButton from './TButton.vue';
 
 const TCellProps = Vue.extend({
   props: {
@@ -78,25 +79,21 @@ const TCellProps = Vue.extend({
   },
 })
 export default class TCell extends TCellProps {
+  cmpList = [];
+
   get flexList() {
     return this.flexListProp;
   }
 
-  data() {
-    return {
-      cmpList: [],
-    };
-  }
-
-  showEleInfo(elementInfo) {
+  showEleInfo(elementInfo: BuildingIfs) {
     this.$store.commit('showEleInfo', elementInfo);
   }
 
-  log(evt) {
+  log(evt: any) {
     window.console.log('Current Cell', evt);
   }
 
-  getFlexWid(widthRatio, flexList) {
+  getFlexWid(widthRatio: number, flexList: FlexIfs[]) {
     let sum = 0;
     for (const item of flexList) {
       sum += item.widthRatio;
@@ -106,12 +103,12 @@ export default class TCell extends TCellProps {
     // return (widthRatio / sum) * 100 + '%';
   }
 
-  chooseCurrent(evt) {
+  chooseCurrent(evt: any) {
     console.log('zhangying->111111', evt);
   }
 
-  deleteEle(elementId) {
-    const buildings = this.$store.state.buildings;
+  deleteEle(elementId: string) {
+    const buildings: BuildingIfs[] = this.$store.state.buildings;
     const deleteEle = {
       elementId,
       parentFlex: buildings,

@@ -21,10 +21,11 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import draggable from 'vuedraggable';
+import { FlexIfs, BuildingIfs } from '@ifs/entity';
 
 @Component({
   components: {
@@ -32,28 +33,25 @@ import draggable from 'vuedraggable';
   },
 })
 export default class CustomLayout extends Vue {
-  data() {
-    return {
-      value: '',
-      layouts: [],
-    };
-  }
+  public value = '';
+  public layouts: BuildingIfs[] = [];
 
-  blur() {
+  public blur() {
     const flexes = this.value.split('-');
-    const layout = {
+    const layout: BuildingIfs = {
       id: 'Tcell-Id-199',
       name: 'Cell',
       attribute: 'LAYOUT',
       componentName: 'TCell',
       styleInfo: {
         name: 'test',
-        style: {}
+        style: {},
       },
       flexList: [],
+      modifyAttrCtl: {},
     };
     for (const item of flexes) {
-      const flexListItem = {
+      const flexListItem: FlexIfs = {
         widthRatio: +item,
         childrenList: [],
       };
@@ -61,7 +59,7 @@ export default class CustomLayout extends Vue {
     }
     this.layouts.push(layout);
   }
-  log(evt) {
+  public log(evt: any) {
     window.console.log(evt);
   }
 }

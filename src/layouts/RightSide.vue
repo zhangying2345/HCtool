@@ -7,7 +7,7 @@
     <Divider orientation="center">元素属性</Divider>
 
     <Form ref="formCustom" :model="formCustom" :label-width="80">
-      <FormItem label="flexDirection" prop="flex-direction">
+      <FormItem v-if="modifyAttrCtl.canModifyFlex" label="flexDirection" prop="flex-direction">
         <Select v-model="formCustom['flex-direction']" placeholder="Select flexDirection">
           <Option value="row">row</Option>
           <Option value="column">column</Option>
@@ -15,7 +15,7 @@
           <Option value="column-reverse">column-reverse</Option>
         </Select>
       </FormItem>
-      <FormItem label="FxLayoutAlign">
+      <FormItem v-if="modifyAttrCtl.canModifyFlex" label="FxLayoutAlign">
         <Row>
           <Col span="11">
             <FormItem prop="justify-content">
@@ -79,20 +79,22 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import * as _ from 'lodash';
+import Tool from '../tools/common';
+import { BuildingIfs } from '../store/Entity';
 
 @Component({
   watch: {
     formCustom: {
-      handler: function(newValue) {
+      handler(newValue: any) {
         const selectedEleInfo = this.$store.state.selectedEleInfo;
-        const buildings = this.$store.state.buildings;
+        const buildings: BuildingIfs[] = this.$store.state.buildings;
 
         selectedEleInfo.styleInfo.style = newValue;
-        this.tools.getEleById(selectedEleInfo.id, buildings, newValue);
+        Tool.getEleById(selectedEleInfo.id, buildings, newValue);
       },
       deep: true
     }
@@ -100,16 +102,19 @@ import * as _ from 'lodash';
 })
 export default class RigthSide extends Vue {
 
-  data() {
-    return {
-      formCustom: this.initFormCustom,
-    };
-  }
+  formCustom = this.initFormCustom;
+  modifyAttrCtl = {
+    canModifyFlex: false
+  };
 
   get showFlag() {
     const flag = this.$store.state.showEleInfo;
     if (flag) {
       this.formCustom = this.$store.state.selectedEleInfo.styleInfo.style;
+      this.modifyAttrCtl = this.$store.state.selectedEleInfo.modifyAttrCtl || {
+        canModifyFlex: false
+      };
+
     }
     return flag;
   }

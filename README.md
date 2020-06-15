@@ -40,3 +40,25 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 3. 添加清空功能
 4. 样式调整支持即时预览
 
+### Run your tests
+```
+npm run test
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Run your unit tests
+```
+npm run test:unit
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
+#### 重要的事说三遍
+- 使用typescript需vue组件的代码中写lang="ts"!
+- 使用typescript需vue组件的代码中写lang="ts"!
+- 使用typescript需vue组件的代码中写lang="ts"!

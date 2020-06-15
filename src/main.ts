@@ -5,11 +5,11 @@ import store from './store';
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 
-import tools from './tools/common';
+// import tools from './tools/common';
 
 Vue.config.productionTip = false;
 Vue.use(ViewUI);
-Vue.prototype.tools = tools;
+// Vue.prototype.tools = tools;
 
 new Vue({
   router,

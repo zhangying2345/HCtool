@@ -30,13 +30,14 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import draggable from 'vuedraggable';
 
 import * as Shortid from 'shortid';
 import * as _ from 'lodash';
+import { FlexIfs, BuildingIfs } from '@ifs/entity';
 
 @Component({
   components: {
@@ -44,80 +45,80 @@ import * as _ from 'lodash';
   },
 })
 export default class PresetLayout extends Vue {
-  data() {
-    return {
-      layouts: [
-        {
-          id: 'TCell-Id-100',
-          name: 'Cell',
-          attribute: 'LAYOUT',
-          componentName: 'TCell',
-          styleInfo: {
-            name: 'test',
-            style: {
-              display: 'flex'
-            }
-          },
-          flexList: [
-            {
-              widthRatio: 1,
-              childrenList: [],
-            },
-          ],
+
+  layouts: BuildingIfs[] = [
+    {
+      id: 'TCell-Id-100',
+      name: 'Cell',
+      attribute: 'LAYOUT',
+      componentName: 'TCell',
+      styleInfo: {
+        name: 'test',
+        style: {
+          display: 'flex',
         },
+      },
+      flexList: [
         {
-          id: 'TCell-Id-101',
-          name: 'Cell',
-          attribute: 'LAYOUT',
-          componentName: 'TCell',
-          styleInfo: {
-            name: 'test',
-            style: {
-              display: 'flex'
-            }
-          },
-          flexList: [
-            {
-              widthRatio: 1,
-              childrenList: [],
-            },
-            {
-              widthRatio: 1,
-              childrenList: [],
-            },
-          ],
-        },
-        {
-          id: 'TCell-Id-102',
-          name: 'Cell',
-          attribute: 'LAYOUT',
-          componentName: 'TCell',
-          styleInfo: {
-            name: 'test',
-            style: {
-              display: 'flex'
-            }
-          },
-          flexList: [
-            {
-              widthRatio: 1,
-              childrenList: [],
-            },
-            {
-              widthRatio: 1,
-              childrenList: [],
-            },
-            {
-              widthRatio: 1,
-              childrenList: [],
-            },
-          ],
+          widthRatio: 1,
+          childrenList: [],
         },
       ],
-    };
-  }
+      modifyAttrCtl: {
+        canModifyFlex: true,
+      },
+    },
+    {
+      id: 'TCell-Id-101',
+      name: 'Cell',
+      attribute: 'LAYOUT',
+      componentName: 'TCell',
+      styleInfo: {
+        name: 'test',
+        style: {
+          display: 'flex',
+        },
+      },
+      flexList: [
+        {
+          widthRatio: 1,
+          childrenList: [],
+        },
+        {
+          widthRatio: 1,
+          childrenList: [],
+        },
+      ],
+    },
+    {
+      id: 'TCell-Id-102',
+      name: 'Cell',
+      attribute: 'LAYOUT',
+      componentName: 'TCell',
+      styleInfo: {
+        name: 'test',
+        style: {
+          display: 'flex',
+        },
+      },
+      flexList: [
+        {
+          widthRatio: 1,
+          childrenList: [],
+        },
+        {
+          widthRatio: 1,
+          childrenList: [],
+        },
+        {
+          widthRatio: 1,
+          childrenList: [],
+        },
+      ],
+    },
+  ];
 
-  cloneFun(el) {
+  cloneFun(el: BuildingIfs) {
     const tempId = Shortid.generate();
     const cloneEl = _.cloneDeep({
       id: tempId,
@@ -125,12 +126,13 @@ export default class PresetLayout extends Vue {
       attribute: el.attribute,
       componentName: el.componentName,
       flexList: el.flexList,
-      styleInfo: el.styleInfo
+      styleInfo: el.styleInfo,
+      modifyAttrCtl: el.modifyAttrCtl,
     });
     return cloneEl;
   }
 
-  log(evt) {
+  log(evt: any) {
     window.console.log(evt);
   }
 }

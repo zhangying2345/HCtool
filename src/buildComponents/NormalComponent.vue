@@ -13,32 +13,32 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import draggable from 'vuedraggable';
+import { BuildingIfs } from '@ifs/entity';
 import * as Shortid from 'shortid';
 
-export default {
-  name: 'NormalComponents',
+@Component({
   components: {
     draggable,
   },
-  data() {
-    return {
-      componentsList: [
-        {
-          id: Shortid.generate(),
-          name: 'Button',
-          attribute: 'COMPONENT',
-          componentName: 'TButton',
-          styleInfo: {
-            name: 'test',
-            style: {},
-          }
-        }
-      ]
-    };
-  }
-};
+})
+export default class NormalComponents extends Vue {
+  componentsList: BuildingIfs[] = [
+    {
+      id: Shortid.generate(),
+      name: 'Button',
+      attribute: 'COMPONENT',
+      componentName: 'TButton',
+      styleInfo: {
+        name: 'test',
+        style: {},
+      },
+    },
+  ];
+}
 </script>
 
 <style></style>

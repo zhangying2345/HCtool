@@ -23,7 +23,7 @@ export interface BuildingIfs {
   name: string;
   attribute: string;
   componentName: string;
-  flexList?: FlexIfs[];
+  flexList: FlexIfs[];
   styleInfo: StyleInfoIfs;
   // 设置控制元素属性的一些开关
   modifyAttrCtl?: Partial<ModifyAttrCtl>;

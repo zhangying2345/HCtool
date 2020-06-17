@@ -31,16 +31,6 @@ import Building from '../layouts/Buildiing';
   },
 })
 export default class Home extends Vue {
-//  点击预览
-//  r.onclick = function() {
-//     var n = t.value;
-//     if (n != "") {
-//       var r = window.open("", "", "");
-//       r.opener = null,
-//       r.document.write(n),
-//       r.document.close()
-//     } else alert("请将需要运行的HTML填写到输入框后再运行！", "alert", "运行提示")
-//   }
 
 }
 </script>

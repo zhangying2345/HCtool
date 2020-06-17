@@ -61,6 +61,7 @@ import { BuildingIfs } from '@ifs/entity';
 import RigthSide from './RightSide.vue';
 import TButton from '../buildComponents/TButton.vue';
 import TCell from '../buildComponents/TCell.vue';
+import TText from '../buildComponents/TText.vue';
 
 @Component({
   components: {
@@ -68,6 +69,7 @@ import TCell from '../buildComponents/TCell.vue';
     TButton,
     TCell,
     RigthSide,
+    TText
   },
 })
 export default class Building extends Vue {

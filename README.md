@@ -62,3 +62,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 使用typescript需vue组件的代码中写lang="ts"!
 - 使用typescript需vue组件的代码中写lang="ts"!
 - 使用typescript需vue组件的代码中写lang="ts"!
+
+#### 使用原则
+1. 组件不允许单独存在，必须存在于容器中

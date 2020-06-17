@@ -32,6 +32,13 @@ const StoreObj: StoreIfs = {
       state.buildings.push(addItem);
     },
 
+    // 清空
+    clearStore(state: any) {
+      state.buildings = [];
+      state.showEleInfo = false;
+      state.selectedEleInfo = null;
+    },
+
     // 根据Id，递归树 删除元素
     deleteEle(state: any, deleteInfo: DeleteEleIfs) {
       const elementId = deleteInfo.elementId;

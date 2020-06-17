@@ -121,7 +121,8 @@ export default class PresetLayout extends Vue {
   cloneFun(el: BuildingIfs) {
     const tempId = Shortid.generate();
     const cloneEl = _.cloneDeep({
-      id: tempId,
+      // css class name不能以数字开头
+      id: `t${tempId}`,
       name: el.name,
       attribute: el.attribute,
       componentName: el.componentName,

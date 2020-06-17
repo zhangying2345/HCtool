@@ -17,6 +17,9 @@ const htmlTemplate = `
         <% }) %>
       </div>
     <%  } %>
+    <% if(item.componentName === 'TText'){ %>
+      <span class="<%= item.id %>">This ia a text</span>
+    <% } %>
   <% } %>
 <% } %>`;
 

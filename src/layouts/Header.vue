@@ -15,7 +15,7 @@
             <Icon type="ios-construct" />
             开发
           </MenuItem>
-          <MenuItem name="3">
+          <MenuItem name="3" @click.native="preview">
             <Icon type="ios-eye" />
             预览
           </MenuItem>
@@ -27,7 +27,7 @@
             <MenuItem name="4-1" @click.native="getH5Code">H5</MenuItem>
             <MenuItem name="4-2">小程序</MenuItem>
           </Submenu>
-          <MenuItem name="5">
+          <MenuItem name="5" @click.native="clear">
             <Icon type="md-trash" />
             清空
           </MenuItem>
@@ -82,6 +82,7 @@ export default class Header extends Vue {
   getH5Code() {
     this.showCode = true;
     const sourceCodeObj: BuildingIfs[] = this.$store.state.buildings;
+    console.log(JSON.stringify(this.$store.state.buildings));
     const generateCode = renderHtml(sourceCodeObj);
     const formattedXml = format(`<div>${generateCode}</div>`);
     console.log('formattedXml\n', formattedXml);
@@ -172,6 +173,26 @@ export default class Header extends Vue {
 
   isEmptyObject(obj: any) {
     return JSON.stringify(obj) === '{}';
+  }
+
+  // 点击预览
+  preview() {
+    this.getH5Code();
+    this.showCode = false;
+    const n = `${this.htmlCode}<style>${this.cssCode}<style/>`;
+    if (n) {
+      const r = window.open('', '', '');
+      if (r) {
+        r.opener = null;
+        r.document.write(n);
+        r.document.close();
+      }
+    }
+  }
+
+  // 清空
+  clear() {
+    this.$store.commit('clearStore');
   }
 }
 </script>

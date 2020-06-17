@@ -63,6 +63,7 @@ import draggable from 'vuedraggable';
 import { BuildingIfs, FlexIfs } from '@ifs/entity';
 
 import TButton from './TButton.vue';
+import TText from './TText.vue';
 
 const TCellProps = Vue.extend({
   props: {
@@ -76,6 +77,7 @@ const TCellProps = Vue.extend({
   components: {
     draggable,
     TButton,
+    TText
   },
 })
 export default class TCell extends TCellProps {

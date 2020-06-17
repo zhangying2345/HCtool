@@ -2,23 +2,26 @@
     <script src="../../node_modules//ejs//ejs.js"></script>
     <script>
       const htmlTemplate = `
-    <% if(buildings.length >= 0) { %>
-      <% for(const item of buildings){ %>
-        <% if(item.componentName === 'TCell'){ %>
-          <div>
-            <% for(const subItem of item.flexList){ %>
-              <% if(item.flexList.length === 1) { %>
-                <%- renderHtml({buildings: subItem.childrenList}) %>
-              <% } else { %>
-                <div style="">
-                  <%- renderHtml({buildings: subItem.childrenList}) %>
-                </div>
-              <% } %>
-            <% } %>
-          </div>
-        <%  } %>
-      <%  } %>
-    <% } %>`;
+      <% if(buildings.length >= 0) { %>
+        <% for(const item of buildings){ %>
+          <% if(item.componentName === 'TCell'){ %>
+            <div class="<%= item.id %>">
+              <% item.flexList.forEach((subItem, index) => { %>
+                <% if(item.flexList.length === 1) { %>
+                  <%- renderHtml(subItem.childrenList) -%>
+                <% } else { %>
+                  <div class="<%= item.id+'_'+index %>">
+                    <%- renderHtml(subItem.childrenList) -%>
+                  </div>
+                <% } %>
+              <% }) %>
+            </div>
+          <%  } %>
+          <% if(item.componentName === 'TText'){ %>
+            <span>This ia a text</span>
+          <% } %>
+        <% } %>
+      <% } %>`;
 
       const renderHtml = (data) => {
         const output = ejs.render(htmlTemplate, data);
@@ -26,40 +29,98 @@
         return ejs.render(htmlTemplate, data);
       };
       const buildings = [
-        {
-          id: 'K191WUm0b',
-          name: 'Cell',
-          attribute: 'LAYOUT',
-          componentName: 'TCell',
-          flexList: [
+    {
+        "id":"k-SBYaE-i",
+        "name":"Cell",
+        "attribute":"LAYOUT",
+        "componentName":"TCell",
+        "flexList":[
             {
-              widthRatio: 1,
-              childrenList: [
-                {
-                  id: 'i6ksr_cKoG',
-                  name: 'Cell',
-                  attribute: 'LAYOUT',
-                  componentName: 'TCell',
-                  flexList: [
+                "widthRatio":1,
+                "childrenList":[
                     {
-                      widthRatio: 1,
-                      childrenList: []
+                        "id":"OLgehpn_1",
+                        "name":"Span",
+                        "attribute":"COMPONENT",
+                        "componentName":"TText",
+                        "flexList":[
+
+                        ],
+                        "styleInfo":{
+                            "name":"test",
+                            "style":{
+
+                            }
+                        }
                     }
-                  ],
-                  styleInfo: {
-                    name: 'test',
-                    style: {}
-                  }
-                }
-              ]
+                ]
             }
-          ],
-          styleInfo: {
-            name: 'test',
-            style: {}
-          }
+        ],
+        "styleInfo":{
+            "name":"test",
+            "style":{
+                "display":"flex"
+            }
+        },
+        "modifyAttrCtl":{
+            "canModifyFlex":true
         }
-      ]
+    },
+    {
+        "id":"TVXTnMqqj",
+        "name":"Cell",
+        "attribute":"LAYOUT",
+        "componentName":"TCell",
+        "flexList":[
+            {
+                "widthRatio":1,
+                "childrenList":[
+                    {
+                        "id":"n0SOmmW5E",
+                        "name":"Span",
+                        "attribute":"COMPONENT",
+                        "componentName":"TText",
+                        "flexList":[
+
+                        ],
+                        "styleInfo":{
+                            "name":"test",
+                            "style":{
+
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                "widthRatio":1,
+                "childrenList":[
+                    {
+                        "id":"gQVdZ4Y-j",
+                        "name":"Span",
+                        "attribute":"COMPONENT",
+                        "componentName":"TText",
+                        "flexList":[
+
+                        ],
+                        "styleInfo":{
+                            "name":"test",
+                            "style":{
+
+                            }
+                        }
+                    }
+                ]
+            }
+        ],
+        "styleInfo":{
+            "name":"test",
+            "style":{
+                "display":"flex"
+            }
+        }
+    }
+]
 
     const result = renderHtml({buildings});
     console.log('result', result);

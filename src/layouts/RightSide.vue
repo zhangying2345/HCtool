@@ -51,8 +51,8 @@
           </Col>
         </Row>
       </FormItem>
-      <FormItem label="FontSize" prop="fontSize">
-        <Input type="text" v-model="formCustom.fontSize"></Input>
+      <FormItem label="FontSize" prop="font-size">
+        <Input type="text" v-model="formCustom['font-size']"></Input>
       </FormItem>
       <FormItem label="Color" prop="color">
         <Input type="text" v-model="formCustom.color"></Input>
@@ -131,7 +131,7 @@ export default class RigthSide extends Vue {
       ['justify-content']: '',
       ['align-items']: '',
 
-      fontSize: '',
+      ['font-size']: '',
       color: '',
       background: '',
       width: '',

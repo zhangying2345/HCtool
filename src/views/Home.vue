@@ -46,11 +46,11 @@ export default class Home extends Vue {
 
     .sidebar {
       width: 30vw;
-      background-color: whitesmoke;
+      background-color: white;
     }
     .content {
       flex: 1;
-      background-color: white;
+      background: linear-gradient(-90deg,rgba(0,0,0,.02) 1px,transparent 0),linear-gradient(rgba(0,0,0,.02) 1px,transparent 0),linear-gradient(-90deg,rgba(0,0,0,.03) 1px,transparent 0),linear-gradient(rgba(0,0,0,.03) 1px,transparent 0),linear-gradient(transparent 4px,#f5f5f5 0,#f5f5f5 97px,transparent 0),linear-gradient(-90deg,#e5e5e5 1px,transparent 0),linear-gradient(-90deg,transparent 4px,#f5f5f5 0,#f5f5f5 97px,transparent 0),linear-gradient(#e5e5e5 1px,transparent 0),#f5f5f5;
     }
   }
 }

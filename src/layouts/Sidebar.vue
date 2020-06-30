@@ -1,12 +1,26 @@
 <template>
   <div class="sidebar">
-    <div class="title">布局设置</div>
-    <span class="sub-title">预置布局</span>
-    <PrsetLayout></PrsetLayout>
-    <span class="sub-title">自定义布局</span>
-    <CustomLayout></CustomLayout>
-    <h3>普通组件</h3>
-    <NormalComponent></NormalComponent>
+    <Collapse v-model="value1">
+      <Panel name="1">
+        容器
+        <PrsetLayout slot="content"></PrsetLayout>
+      </Panel>
+      <Panel name="2">
+        自定义容器
+        <CustomLayout slot="content"></CustomLayout>
+      </Panel>
+      <Panel name="3">
+        组件
+        <NormalComponent slot="content"></NormalComponent>
+      </Panel>
+  </Collapse>
+    <!-- <div class="title">布局设置</div> -->
+    <!-- <span class="sub-title">预置布局</span> -->
+    <!-- <PrsetLayout></PrsetLayout> -->
+    <!-- <span class="sub-title">自定义布局</span> -->
+    <!-- <CustomLayout></CustomLayout> -->
+    <!-- <h3>普通组件</h3> -->
+    <!-- <NormalComponent></NormalComponent> -->
   </div>
 </template>
 

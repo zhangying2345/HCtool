@@ -37,6 +37,7 @@ interface StateIfs {
   // 当前选择的element info
   // selectedEleInfo: BuildingIfs | FlexIfs | null;
   selectedEleInfo: BuildingIfs | null;
+  componentIcon?: any;
 }
 
 export interface StoreIfs {

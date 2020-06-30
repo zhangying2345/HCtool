@@ -12,6 +12,10 @@ const StoreObj: StoreIfs = {
 
     // 当前选择的元素的信息
     selectedEleInfo: null,
+    componentIcon: {
+      TButton: 'ios-game-controller-a-outline',
+      TText: 'ios-paper-outline',
+    }
   },
 
   mutations: {

@@ -8,7 +8,10 @@
       class="list-group-item"
     >
       <div class="component-item" v-for="ele in componentsList" :key="ele.id">
-        {{ ele.name }}
+        <div class="item-line">
+          <div class="item-icon"><Icon :type="getIcon(ele.componentName)" /></div>
+          <div class="item-icon">{{ele.name}}</div>
+        </div>
       </div>
     </draggable>
   </div>
@@ -66,11 +69,28 @@ export default class NormalComponents extends Vue {
     });
     return cloneEl;
   }
+
+  getIcon(componentName: string) {
+    return this.$store.state.componentIcon[componentName];
+  }
 }
 </script>
 
-<style>
+<style lang="less">
 .component-item {
+
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .item-line {
+    display: flex;
+  }
+
+  .item-icon {
+    text-align: center;
+    flex: 
+  }
 }
 </style>

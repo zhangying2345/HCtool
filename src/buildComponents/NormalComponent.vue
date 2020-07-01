@@ -54,6 +54,50 @@ export default class NormalComponents extends Vue {
       },
       flexList: []
     },
+    {
+      id: Shortid.generate(),
+      name: 'Span',
+      attribute: 'COMPONENT',
+      componentName: 'TText',
+      styleInfo: {
+        name: 'test',
+        style: {},
+      },
+      flexList: []
+    },
+    {
+      id: Shortid.generate(),
+      name: 'Span',
+      attribute: 'COMPONENT',
+      componentName: 'TText',
+      styleInfo: {
+        name: 'test',
+        style: {},
+      },
+      flexList: []
+    },
+    {
+      id: Shortid.generate(),
+      name: 'Span',
+      attribute: 'COMPONENT',
+      componentName: 'TText',
+      styleInfo: {
+        name: 'test',
+        style: {},
+      },
+      flexList: []
+    },
+    {
+      id: Shortid.generate(),
+      name: 'Span',
+      attribute: 'COMPONENT',
+      componentName: 'TText',
+      styleInfo: {
+        name: 'test',
+        style: {},
+      },
+      flexList: []
+    },
   ];
 
   cloneFun(el: BuildingIfs) {
@@ -76,15 +120,20 @@ export default class NormalComponents extends Vue {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+.list-group-item {
+  overflow: hidden;
+}
+
 .component-item {
 
   float: left;
   width: 48%;
   height: 65px;
   cursor: pointer;
+  margin-bottom: 15px;
 
-  &:first-child {
+  &:nth-child(2n-1) {
     margin-right: calc(4% - 2px);
   }
 

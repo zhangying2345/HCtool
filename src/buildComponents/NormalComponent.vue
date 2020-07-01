@@ -79,18 +79,32 @@ export default class NormalComponents extends Vue {
 <style lang="less">
 .component-item {
 
+  float: left;
+  width: 48%;
+  height: 65px;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  &:first-child {
+    margin-right: calc(4% - 2px);
+  }
 
   .item-line {
-    display: flex;
+    border: 1px solid #dcdee2;
+    padding: 16px;
   }
 
   .item-icon {
     text-align: center;
-    flex: 
+    display: flex;
+    justify-content: center;
   }
+}
+
+.ivu-collapse-content {
+  padding: 0 !important;
+}
+
+.ivu-collapse-content-box {
+  padding: 0 !important;
 }
 </style>
